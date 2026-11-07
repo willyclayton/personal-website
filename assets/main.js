@@ -373,3 +373,34 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => moveInk(true));
   show(location.hash, { initial: true });
 })();
+
+// Georgia Tech rows: every click sends a yellow jacket floating up the screen.
+(() => {
+  const SVG = '<svg viewBox="0 0 64 64" aria-hidden="true">' +
+    '<ellipse cx="22" cy="20" rx="13" ry="7" transform="rotate(-25 22 20)" fill="#dfe9f3" fill-opacity=".85" stroke="#1d1d1f" stroke-width="1.5"/>' +
+    '<ellipse cx="42" cy="20" rx="13" ry="7" transform="rotate(25 42 20)" fill="#dfe9f3" fill-opacity=".85" stroke="#1d1d1f" stroke-width="1.5"/>' +
+    '<ellipse cx="32" cy="40" rx="11" ry="16" fill="#f2c230" stroke="#1d1d1f" stroke-width="2"/>' +
+    '<path d="M22 35h20M21.5 42h21M24 49h16" stroke="#1d1d1f" stroke-width="4" stroke-linecap="round"/>' +
+    '<circle cx="32" cy="22" r="7" fill="#1d1d1f"/>' +
+    '<circle cx="29.5" cy="21" r="1.6" fill="#fff"/><circle cx="34.5" cy="21" r="1.6" fill="#fff"/>' +
+    '<path d="M29 15l-4-6M35 15l4-6" stroke="#1d1d1f" stroke-width="1.8" stroke-linecap="round"/>' +
+    '<path d="M32 56l0 5" stroke="#1d1d1f" stroke-width="2" stroke-linecap="round"/></svg>';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('summary[data-buzz]').forEach((s) => {
+    s.addEventListener('click', (e) => {
+      if (reduce.matches) return;
+      const x = e.clientX || s.getBoundingClientRect().left + 40;
+      const y = e.clientY || s.getBoundingClientRect().top + 20;
+      const bee = document.createElement('span');
+      bee.className = 'buzz';
+      bee.innerHTML = SVG;
+      bee.style.left = x + 'px';
+      bee.style.top = y + 'px';
+      bee.style.setProperty('--drift', (Math.random() * 160 - 80).toFixed(0) + 'px');
+      bee.style.setProperty('--spin', (Math.random() * 40 - 20).toFixed(0) + 'deg');
+      bee.style.setProperty('--dur', (1.6 + Math.random() * .8).toFixed(2) + 's');
+      document.body.append(bee);
+      bee.addEventListener('animationend', () => bee.remove());
+    });
+  });
+})();

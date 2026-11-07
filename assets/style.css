@@ -383,3 +383,22 @@ html:not(.js) .type-toggle { display: none; }
   font-size: .875rem;
 }
 .body .courses li { margin: 0; padding: .2rem 0; break-inside: avoid; }
+
+/* ---------- Georgia Tech yellow jacket ---------- */
+.buzz {
+  position: fixed;
+  z-index: 50;
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  pointer-events: none;
+  animation: buzz-up var(--dur, 2s) cubic-bezier(.3, .1, .3, 1) forwards;
+}
+.buzz svg { width: 100%; height: 100%; animation: buzz-wobble .35s ease-in-out infinite alternate; }
+@keyframes buzz-up {
+  0% { opacity: 0; transform: translate(0, 10px) scale(.5); }
+  12% { opacity: 1; transform: translate(0, -20px) scale(1.1); }
+  100% { opacity: 0; transform: translate(var(--drift), -100vh) scale(.9) rotate(var(--spin)); }
+}
+@keyframes buzz-wobble { from { transform: rotate(-8deg); } to { transform: rotate(8deg); } }
+.body b { color: var(--fg); font-weight: 600; }
