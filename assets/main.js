@@ -149,7 +149,7 @@
     const toggle = document.querySelector('.type-toggle');
     const NAME = 'Will.';
     // Typed in order after the name, then it settles back on the name and stops.
-    // Keep each line to 21 characters or fewer so it fits the reserved width.
+    // Lines can wrap: the reserved height fits two lines on desktop and three on phones.
     const lines = [
       'a solutions engineer.',
       'a Georgia Tech grad.',
@@ -157,6 +157,8 @@
       'a Braves fan.',
       'a golfer.',
       'an OK golfer.',
+      'a photographer.',
+      'a really really amateur photographer.',
       'a skier.',
       'a DIY-er.',
       'a tinkerer.',
@@ -228,9 +230,18 @@
       };
       // If the new line is the old one with words added in the middle, move the
       // caret back and insert them instead of deleting ("a golfer." -> "an OK golfer.").
-      const tail = prev.slice(k);
-      const insert = text.slice(k, text.length - tail.length);
+      let ik = k;
+      let tail = prev.slice(ik);
+      let insert = text.slice(ik, text.length - tail.length);
+      // Insert before the existing space, not after it, so the new words never
+      // run into the next one ("amateurphotographer.") and overflow on phones.
+      if (insert.endsWith(' ') && prev[ik - 1] === ' ') {
+        ik -= 1;
+        tail = prev.slice(ik);
+        insert = text.slice(ik, text.length - tail.length);
+      }
       if (afterEl && tail && insert && text.endsWith(tail)) {
+        const k = ik;
         heading.classList.add('typing');
         const back = (i) => {
           renderMid(prev.slice(0, i), prev.slice(i));

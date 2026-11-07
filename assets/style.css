@@ -187,8 +187,9 @@ main:focus, .panel [tabindex="-1"]:focus { outline: none; }
 }
 .type { font: inherit; line-height: 1.25; letter-spacing: -.03em; }
 .type-static { display: block; color: var(--muted); }
-.type-line { display: block; min-height: 2.5em; }
-@media (min-width: 40rem) { .type-line { min-height: 1.25em; white-space: nowrap; } }
+/* Room for the longest line ("a really really amateur photographer.") so nothing jumps. */
+.type-line { display: block; min-height: 3.75em; }
+@media (min-width: 40rem) { .type-line { min-height: 2.5em; } }
 /* The caret is a zero-width border so it never adds a line-break point. */
 .caret {
   border-left: .085em solid var(--caret);
