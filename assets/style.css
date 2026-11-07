@@ -22,27 +22,19 @@
   --caret: #e4002b;
   --sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --ease: cubic-bezier(.2, .7, .2, 1);
+  --ease: cubic-bezier(.16, 1, .3, 1);
   --bar-h: 4rem;
   --gutter: clamp(1.25rem, 5vw, 3rem);
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0b0b0c;
-    --fg: #ededee;
-    --muted: #a1a1aa;
-    --line: #26262a;
-    --link: #3f7fa3;
+    --bg: #0b0b0c; --fg: #ededee; --muted: #a1a1aa; --line: #26262a; --link: #3f7fa3;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0b0b0c;
-  --fg: #ededee;
-  --muted: #a1a1aa;
-  --line: #26262a;
-  --link: #3f7fa3;
+  --bg: #0b0b0c; --fg: #ededee; --muted: #a1a1aa; --line: #26262a; --link: #3f7fa3;
   color-scheme: dark;
 }
 
@@ -69,8 +61,8 @@ body {
 }
 
 svg { display: block; }
-h1, h2, h3, p, dl, dd, blockquote { margin: 0; }
-h1, h2, h3 { line-height: 1.2; }
+h1, h2, p, ul, blockquote { margin: 0; }
+h1, h2 { line-height: 1.2; }
 
 a {
   color: inherit;
@@ -82,34 +74,20 @@ a {
 }
 a:hover { text-decoration-color: currentColor; }
 
-:focus-visible {
-  outline: 2px solid var(--fg);
-  outline-offset: 3px;
-  border-radius: 3px;
-}
+:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; border-radius: 3px; }
 
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
 }
 
 .skip {
-  position: absolute;
-  left: 1rem;
-  top: -4rem;
-  z-index: 100;
-  padding: .75rem 1rem;
-  background: var(--fg);
-  color: var(--bg);
-  text-decoration: none;
+  position: absolute; left: 1rem; top: -4rem; z-index: 100;
+  padding: .75rem 1rem; background: var(--fg); color: var(--bg); text-decoration: none;
 }
 .skip:focus { top: 1rem; }
 
-/* ---------- Top bar ---------- */
+/* ---------- Top bar: the four tabs ---------- */
 
 .bar {
   position: sticky;
@@ -117,61 +95,39 @@ a:hover { text-decoration-color: currentColor; }
   z-index: 20;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
   height: var(--bar-h);
-  /* Line the name and tabs up with the content column on wide screens. */
+  /* Line the tabs up with the content column on wide screens. */
   padding: env(safe-area-inset-top) max(var(--gutter), calc((100% - 46rem) / 2 + var(--gutter))) 0;
-  background: var(--bg);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
   font-family: var(--mono);
   font-size: .9375rem;
+  transition: border-color .3s;
 }
 .bar.scrolled { border-bottom-color: var(--line); }
 
-.tabs {
-  position: relative;
-  display: flex;
-  gap: 1.5rem;
-}
+.tabs { position: relative; display: flex; gap: 1.5rem; }
 .tabs a {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
   color: var(--muted);
   text-decoration: none;
+  transition: color .25s;
 }
 .tabs a:hover, .tabs a[aria-current="page"] { color: var(--fg); }
-/* The line under the current tab. main.js sets its position and width. */
+/* The line under the current tab glides to the new one. main.js positions it. */
 .tabs .ink {
   position: absolute;
   left: 0;
   bottom: 6px;
   width: 0;
-  height: 2px;
+  height: 1px;
   background: var(--fg);
-  transition: transform .3s var(--ease), width .3s var(--ease);
+  transition: transform .5s var(--ease), width .5s var(--ease);
   pointer-events: none;
-}
-
-.theme {
-  display: inline-grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  margin: 0 -.8rem 0 -.5rem;
-  border: 0;
-  background: none;
-  color: var(--muted);
-  cursor: pointer;
-}
-.theme:hover { color: var(--fg); }
-.theme svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
-.theme .moon { display: none; }
-:root[data-theme="dark"] .theme .sun { display: none; }
-:root[data-theme="dark"] .theme .moon { display: inline; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme .sun { display: none; }
-  :root:not([data-theme="light"]) .theme .moon { display: inline; }
 }
 
 /* ---------- Panels ---------- */
@@ -197,28 +153,25 @@ main {
 /* Headings get focus after a tab switch so screen readers land there; no ring needed. */
 main:focus, .panel [tabindex="-1"]:focus { outline: none; }
 
-/* Each child of a newly opened tab fades up a beat after the one before. */
+/* Tab change: each piece comes in from a soft blur, one after another. */
 .panel.entering > * {
-  animation: rise .45s var(--ease) both;
-  animation-delay: calc(var(--i, 0) * 50ms);
+  animation: materialize .7s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
 }
-@keyframes rise {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: none; }
+@keyframes materialize {
+  from { opacity: 0; filter: blur(10px); transform: translateY(10px); }
+  to { opacity: 1; filter: blur(0); transform: none; }
 }
 
 .panel-title {
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
-  font-weight: 600;
-  letter-spacing: -.03em;
+  margin-bottom: 1.75rem;
+  font-family: var(--mono);
+  font-size: .875rem;
+  font-weight: 400;
+  letter-spacing: .02em;
+  color: var(--muted);
+  text-transform: lowercase;
 }
-.sub-title {
-  margin: 3.5rem 0 1rem;
-  font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: -.01em;
-}
-.plain { max-width: 36rem; margin-top: 1rem; }
 
 /* ---------- Home: just the hello, centered ---------- */
 
@@ -232,17 +185,10 @@ main:focus, .panel [tabindex="-1"]:focus { outline: none; }
   font-family: var(--mono);
   font-size: clamp(1.75rem, 6vw, 3.25rem);
 }
-
-.type {
-  font: inherit;
-  line-height: 1.25;
-  letter-spacing: -.03em;
-}
+.type { font: inherit; line-height: 1.25; letter-spacing: -.03em; }
 .type-static { display: block; color: var(--muted); }
 .type-line { display: block; min-height: 2.5em; }
-@media (min-width: 40rem) {
-  .type-line { min-height: 1.25em; white-space: nowrap; }
-}
+@media (min-width: 40rem) { .type-line { min-height: 1.25em; white-space: nowrap; } }
 /* The caret is a zero-width border so it never adds a line-break point. */
 .caret {
   border-left: .085em solid var(--caret);
@@ -267,106 +213,68 @@ main:focus, .panel [tabindex="-1"]:focus { outline: none; }
   font-family: var(--mono);
   font-size: .8125rem;
   cursor: pointer;
+  opacity: .6;
+  transition: opacity .2s;
 }
-.type-toggle:hover { color: var(--fg); }
+.type-toggle:hover { opacity: 1; color: var(--fg); }
 html:not(.js) .type-toggle { display: none; }
 
-/* ---------- Work ---------- */
+/* ---------- Rows you tap open (Work, Projects, About) ---------- */
 
-.timeline {
-  margin: 2rem 0 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--line);
-}
-.sub-title + .timeline { margin-top: 0; }
-.role {
-  display: grid;
-  grid-template-columns: 8rem minmax(0, 1fr);
-  gap: 1.5rem;
-  padding: 1.25rem 0;
-  border-bottom: 1px solid var(--line);
-}
-.when {
-  padding-top: .15rem;
-  font-family: var(--mono);
-  font-size: .875rem;
-  color: var(--muted);
-  white-space: nowrap;
-}
-.role h3 { font-size: 1.0625rem; font-weight: 600; letter-spacing: -.01em; }
-.where { margin-top: .15rem; color: var(--muted); }
-.wins { margin: .75rem 0 0; padding-left: 1.1rem; }
-.wins li { margin-top: .35rem; padding-left: .2rem; }
-.wins li::marker { color: var(--muted); }
-
-.more { margin-top: .5rem; }
-.more summary {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  min-height: 44px;
-  font-family: var(--mono);
-  font-size: .875rem;
+.rows { border-top: 1px solid var(--line); }
+.row { border-bottom: 1px solid var(--line); }
+.row summary {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  min-height: 3.5rem;
+  padding: 1rem 0;
   cursor: pointer;
   list-style: none;
+  transition: padding-left .4s var(--ease);
 }
-.more summary::-webkit-details-marker { display: none; }
-.more summary::after { content: "+"; }
-.more[open] summary::after { content: "−"; }
-.more summary:hover { text-decoration: underline; text-decoration-color: var(--link); text-decoration-thickness: .16em; text-underline-offset: .25em; }
-.more[open] > :not(summary) { animation: rise .3s var(--ease) both; }
-.detail dt { margin-top: .9rem; font-weight: 600; }
-.detail dt:first-child { margin-top: .25rem; }
-.detail dd { margin-top: .15rem; }
-
-/* ---------- Projects ---------- */
-
-.projects {
-  margin: 2rem 0 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--line);
+.row summary::-webkit-details-marker { display: none; }
+.row summary:hover { padding-left: .4rem; }
+.row .n { flex: 1; font-weight: 500; letter-spacing: -.01em; }
+.row .y { font-family: var(--mono); font-size: .8125rem; color: var(--muted); }
+/* A plus that turns into an x. */
+.row summary::after {
+  content: "";
+  flex: none;
+  align-self: center;
+  width: .7rem;
+  height: .7rem;
+  background:
+    linear-gradient(var(--muted), var(--muted)) center / 100% 1px no-repeat,
+    linear-gradient(var(--muted), var(--muted)) center / 1px 100% no-repeat;
+  transition: transform .45s var(--ease);
 }
-.projects li { position: relative; padding: 1rem 0; border-bottom: 1px solid var(--line); }
-.projects h3 { font-size: 1.0625rem; font-weight: 600; letter-spacing: -.01em; }
-/* The whole row opens the project, so it's an easy tap on a phone. */
-.projects h3 a::after { content: ""; position: absolute; inset: 0; }
-.projects li:hover h3 a { text-decoration-color: currentColor; }
-.projects h3 + p { margin-top: .2rem; }
-.meta { margin-top: .35rem; font-family: var(--mono); font-size: .8125rem; color: var(--muted); }
-/* Sits above the row link, with a bigger tap area than it looks. */
-.meta a { position: relative; z-index: 1; display: inline-block; padding: .75rem .5rem; margin: -.75rem -.5rem; color: var(--fg); }
+.row[open] summary::after { transform: rotate(45deg); }
+.row[open] .n { color: var(--fg); }
+
+.body {
+  padding: 0 0 1.25rem;
+  max-width: 36rem;
+  color: var(--muted);
+  animation: materialize .55s var(--ease) both;
+}
+.body p + p, .body p + ul, .body ul + p { margin-top: .5rem; }
+.body ul { padding-left: 1.1rem; }
+.body li { margin-top: .25rem; }
+.meta { display: flex; gap: 1.25rem; font-family: var(--mono); font-size: .875rem; }
+.meta a { display: inline-block; padding: .6rem 0; color: var(--fg); }
 
 /* ---------- About ---------- */
 
-.bio { max-width: 36rem; margin-top: 1.5rem; font-size: 1.125rem; }
+.bio { margin-bottom: 2rem; font-size: clamp(1.25rem, 1.1rem + .6vw, 1.5rem); letter-spacing: -.01em; }
 
-.quote-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--line);
-}
-.quote-list li { padding: 1rem 0; border-bottom: 1px solid var(--line); }
-.who { margin-top: .4rem; color: var(--muted); font-size: .9375rem; }
+.quote-list { padding: 0; list-style: none; }
+.quote-list blockquote { color: var(--fg); }
+.who { margin-top: .4rem; font-family: var(--mono); font-size: .8125rem; }
 /* With JS: one quote at a time. */
 .js .quotes.deck .quote-list li { display: none; }
-.js .quotes.deck .quote-list li.on {
-  display: block;
-  min-height: 9rem;
-  padding: 1.25rem 0;
-  animation: rise .35s var(--ease) both;
-}
-.js .quotes.deck .quote-list li.on blockquote { max-width: 34rem; font-size: clamp(1.125rem, 1rem + .5vw, 1.3125rem); }
-.deck-controls {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  margin-top: .25rem;
-  font-family: var(--mono);
-  font-size: .875rem;
-}
+.js .quotes.deck .quote-list li.on { display: block; min-height: 6.5rem; animation: materialize .5s var(--ease) both; }
+.deck-controls { margin-top: .25rem; font-family: var(--mono); font-size: .875rem; }
 .deck-controls button {
   min-height: 44px;
   padding: 0;
@@ -380,7 +288,7 @@ html:not(.js) .type-toggle { display: none; }
   text-underline-offset: .25em;
   cursor: pointer;
 }
-.fine { margin-top: .75rem; color: var(--muted); font-size: .875rem; }
+.fine { margin-top: .5rem; font-size: .8125rem; }
 
 /* ---------- Footer ---------- */
 
@@ -388,7 +296,8 @@ html:not(.js) .type-toggle { display: none; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0 1rem;
   width: 100%;
   max-width: 46rem;
   margin: 0 auto;
@@ -397,55 +306,48 @@ html:not(.js) .type-toggle { display: none; }
   font-size: .8125rem;
   color: var(--muted);
 }
-.foot-links { display: flex; align-items: center; gap: 1.25rem; }
+.foot-links { display: flex; align-items: center; gap: 1rem; }
 .foot-links a { display: inline-block; padding: .8rem 0; }
+
+.theme {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: 0 -.8rem 0 -.5rem;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+.theme:hover { color: var(--fg); }
+.theme svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; transition: transform .6s var(--ease); }
+.theme:hover svg { transform: rotate(45deg); }
+.theme .moon { display: none; }
+:root[data-theme="dark"] .theme .sun { display: none; }
+:root[data-theme="dark"] .theme .moon { display: inline; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme .sun { display: none; }
+  :root:not([data-theme="light"]) .theme .moon { display: inline; }
+}
 
 /* ---------- Phones ---------- */
 
 @media (max-width: 40rem) {
-  /* One row of tabs across the top. A bottom bar would fight the iOS Safari
-     toolbar, so the tabs stay on top. */
   :root { --bar-h: 3.25rem; }
   .tabs { flex: 1; justify-content: space-between; gap: 0; }
-  .foot { flex-wrap: wrap; }
-  .foot-links { gap: 1rem; }
-
   .hero { font-size: clamp(1.75rem, 8.4vw, 2.25rem); }
-  .role { grid-template-columns: minmax(0, 1fr); gap: .25rem; }
-  .when { padding-top: 0; }
 }
 
-/* ---------- Motion preferences ---------- */
-
+/* ---------- Motion preferences ----------
+   Slides and blurs turn off. The typewriter still types: it changes text, it doesn't move. */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-delay: 0s !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-    scroll-behavior: auto !important;
-  }
-  .caret, .type-toggle { display: none; }
-}
-
-/* Same-document View Transitions, where supported: the page crossfades
-   and the tab line slides to its new spot. */
-.tabs .ink { view-transition-name: tab-ink; }
-::view-transition-old(root),
-::view-transition-new(root) { animation-duration: .2s; }
-::view-transition-group(tab-ink) {
-  animation-duration: .3s;
-  animation-timing-function: var(--ease);
-}
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) { animation: none !important; }
+  .panel.entering > *, .body, .js .quotes.deck .quote-list li.on { animation: none !important; }
+  .tabs .ink, .row summary, .row summary::after, .theme svg { transition: none !important; }
 }
 
 @media print {
   .bar, .deck-controls, .foot, .skip, .type-toggle { display: none !important; }
   .js .panel[hidden] { display: block !important; content-visibility: visible !important; }
   .panel + .panel { margin-top: 2rem !important; }
-  .more > :not(summary) { display: block !important; }
 }

@@ -57,14 +57,30 @@
     }
   }
 
+  // Tab change: children blur in one after another, and the title decodes.
+  const GLYPHS = '01/\\_-=+*<>#';
+  function scramble(el) {
+    const text = el.dataset.text || (el.dataset.text = el.textContent);
+    if (reduceMotion.matches) { el.textContent = text; return; }
+    const start = performance.now();
+    const dur = 420;
+    const frame = (now) => {
+      const p = Math.min(1, (now - start) / dur);
+      const fixed = Math.floor(p * text.length);
+      el.textContent = text.slice(0, fixed) + [...text.slice(fixed)].map((c) => (c === ' ' ? ' ' : GLYPHS[Math.floor(Math.random() * GLYPHS.length)])).join('');
+      if (p < 1) requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  }
   function stagger(panel) {
-    if (reduceMotion.matches) return;
     Array.from(panel.children).forEach((child, i) => {
       child.style.setProperty('--i', Math.min(i, 10));
     });
     panel.classList.remove('entering');
     void panel.offsetWidth;
     panel.classList.add('entering');
+    const t = panel.querySelector('.scr');
+    if (t) scramble(t);
   }
 
   function show(hash, opts) {
@@ -76,8 +92,7 @@
     const focusEl = target || panel.querySelector('h1, h2');
     // Find-in-page (Ctrl+F) opens a tab itself and scrolls to the match: don't fight it.
     const quiet = o.initial || o.fromFind;
-    const useVT = changed && !quiet && !reduceMotion.matches &&
-      typeof document.startViewTransition === 'function';
+    const useVT = false; // our own blur-in replaces the browser crossfade
 
     const swap = () => {
       TABS.forEach((id) => setHidden(panels[id], id !== tab));
@@ -214,7 +229,6 @@
       heading.classList.remove('typing');
       heading.classList.add('done');
       setToggle('replay', 'Replay the typing animation');
-      try { sessionStorage.setItem('typed', '1'); } catch (e) {}
     }
     function start() {
       started = true;
@@ -257,21 +271,11 @@
       else if (pending) at(300, pending);
     });
 
-    let seen = false;
-    try { seen = sessionStorage.getItem('typed') === '1'; } catch (e) {}
-
     return {
-      // Called whenever the Home tab is shown.
+      // Called whenever the Home tab is shown: types every time you land on Home.
       resume() {
         onHome = true;
-        if (finished) return;
-        if (!started) {
-          if (reduceMotion.matches || seen) {
-            started = true;
-            return finish();
-          }
-          return start();
-        }
+        if (!started || finished) return start();
         if (pending) at(250, pending);
       },
       // Called when another tab is shown.

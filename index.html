@@ -64,7 +64,7 @@
 
 <main id="main" tabindex="-1">
 
-  <!-- HOME: just the hello. Everything else is behind the tabs. -->
+  <!-- HOME: just the hello. -->
   <section id="home" class="panel" aria-labelledby="home-h">
     <div class="hero">
       <h1 id="home-h" class="type">
@@ -78,180 +78,143 @@
     </div>
   </section>
 
-  <!-- WORK -->
+  <!-- WORK: one line per role; tap for details. -->
   <section id="work" class="panel" aria-labelledby="work-h">
-    <h2 id="work-h" class="panel-title">Work</h2>
+    <h2 id="work-h" class="panel-title"><span class="sr-only">Work</span><span class="scr" aria-hidden="true">Work</span></h2>
 
-    <ol class="timeline">
-      <li class="role">
-        <p class="when">2026 – now</p>
-        <div>
-          <h3>Solutions Engineer, <a href="https://omni.co/">Omni Analytics</a></h3>
-          <p class="where">Chicago</p>
+    <div class="rows">
+      <details class="row">
+        <summary><span class="n">Omni Analytics</span><span class="y">2026–</span></summary>
+        <div class="body">
+          <p>Solutions Engineer, Chicago.</p>
+          <p class="meta"><a href="https://omni.co/">omni.co ↗</a></p>
         </div>
-      </li>
-
-      <li class="role">
-        <p class="when">2020 – 2026</p>
-        <div>
-          <h3>Data &amp; Applied Intelligence Consultant, Accenture</h3>
-          <p class="where">Chicago and Atlanta</p>
-          <ul class="wins">
-            <li>Built BigQuery and Airflow pipelines (10+ sources, 50+ tables) to automate recurring reporting.</li>
-            <li>Automated claims testing in Python and SQL, raising attribute coverage from about 5% to about 30%.</li>
-            <li>Supported about $55M in savings tracking through reporting and metric governance.</li>
-            <li>Shipped Tableau and Power BI dashboards for leadership reviews and self-service reporting.</li>
+      </details>
+      <details class="row">
+        <summary><span class="n">Accenture</span><span class="y">2020–26</span></summary>
+        <div class="body">
+          <p>Data &amp; Applied Intelligence Consultant. Telecom, healthcare and aerospace clients.</p>
+          <ul>
+            <li>BigQuery and Airflow pipelines: 10+ sources, 50+ tables.</li>
+            <li>Claims-test coverage from about 5% to 30%.</li>
+            <li>About $55M in savings tracked.</li>
+            <li>Tableau and Power BI dashboards for leadership.</li>
           </ul>
-          <details class="more">
-            <summary>Clients</summary>
-            <dl class="detail">
-              <dt>Telecom</dt>
-              <dd>5G home internet, field ops and site acquisition costs. Datasets and reporting to find cost drivers and regional performance issues, plus standardized KPIs for leadership dashboards.</dd>
-              <dt>Healthcare</dt>
-              <dd>Claims testing and savings tracking.</dd>
-              <dt>Aerospace</dt>
-              <dd>Plant ops, and a migration assessment covering about 2,000 systems with SAP HANA testing.</dd>
-            </dl>
-          </details>
         </div>
-      </li>
-
-      <li class="role">
-        <p class="when">2018 – 2019</p>
-        <div>
-          <h3>Internships</h3>
-          <p class="where">Lockheed Martin, Gulfstream Aerospace, Brasfield &amp; Gorrie</p>
-          <details class="more">
-            <summary>Details</summary>
-            <dl class="detail">
-              <dt>Lockheed Martin, operations engineering, summer 2019</dt>
-              <dd>Built an interactive Tableau map of tool areas on the C-130 and F-35 production floor.</dd>
-              <dt>Gulfstream Aerospace, ERP, summer 2018</dt>
-              <dd>Regression testing during an SAP rollout, and an Excel macro that saved about 4 hours a week of manual entry.</dd>
-              <dt>Brasfield &amp; Gorrie, project management, spring 2018</dt>
-              <dd>Project closeouts, subcontractor compliance paperwork and preconstruction estimates.</dd>
-            </dl>
-          </details>
+      </details>
+      <details class="row">
+        <summary><span class="n">Internships</span><span class="y">2018–19</span></summary>
+        <div class="body">
+          <ul>
+            <li>Lockheed Martin: Tableau map of the C-130 and F-35 production floor.</li>
+            <li>Gulfstream Aerospace: SAP testing, and a macro that saved 4 hours a week.</li>
+            <li>Brasfield &amp; Gorrie: project closeouts and estimates.</li>
+          </ul>
         </div>
-      </li>
-    </ol>
-
-    <h2 id="education" class="sub-title">Education</h2>
-    <ol class="timeline">
-      <li class="role">
-        <p class="when">2022 – 2025</p>
-        <div>
-          <h3>MS Analytics, Georgia Tech</h3>
-          <p class="where">Completed while working full time</p>
-        </div>
-      </li>
-      <li class="role">
-        <p class="when">2015 – 2019</p>
-        <div>
-          <h3>BS Mechanical Engineering, Georgia Tech</h3>
-          <p class="where">Certificate in Business Analytics</p>
-        </div>
-      </li>
-    </ol>
-
-    <h2 class="sub-title">Tools</h2>
-    <p class="plain">SQL, Python, BigQuery, Airflow, Tableau, Power BI, SAP, Git, Claude Code</p>
+      </details>
+      <details class="row">
+        <summary><span class="n">Georgia Tech, MS</span><span class="y">2025</span></summary>
+        <div class="body"><p>MS Analytics, completed while working full time.</p></div>
+      </details>
+      <details class="row">
+        <summary><span class="n">Georgia Tech, BS</span><span class="y">2019</span></summary>
+        <div class="body"><p>BS Mechanical Engineering, with a Certificate in Business Analytics.</p></div>
+      </details>
+      <details class="row">
+        <summary><span class="n">Tools</span><span class="y"></span></summary>
+        <div class="body"><p>SQL, Python, BigQuery, Airflow, Tableau, Power BI, SAP, Git, Claude Code.</p></div>
+      </details>
+    </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- PROJECTS: names only; tap for what it is and links. -->
   <section id="projects" class="panel" aria-labelledby="projects-h">
-    <h2 id="projects-h" class="panel-title">Projects</h2>
+    <h2 id="projects-h" class="panel-title"><span class="sr-only">Projects</span><span class="scr" aria-hidden="true">Projects</span></h2>
 
-    <ul class="projects">
-      <li>
-        <h3><a href="https://the-bracket-lab.vercel.app/">The Bracket Lab</a></h3>
-        <p>Eight AI models pick the March Madness bracket and get scored live against real results.</p>
-        <p class="meta">Next.js · <a href="https://github.com/willyclayton/the-bracket-lab">code</a></p>
-      </li>
-      <li>
-        <h3><a href="https://green-jacket-lab.vercel.app/">Masters 2026</a></h3>
-        <p>Three AI models and live betting odds for the 2026 Masters.</p>
-        <p class="meta">Next.js · <a href="https://github.com/willyclayton/masters-2026">code</a></p>
-      </li>
-      <li>
-        <h3><a href="https://movie-picker-seven-gilt.vercel.app">Movie Recommender</a></h3>
-        <p>Picks a movie based on your mood.</p>
-        <p class="meta">Next.js · <a href="https://github.com/willyclayton/movie-picker">code</a></p>
-      </li>
-      <li>
-        <h3><a href="https://github.com/willyclayton/chicago-history">Chicago Time Map</a></h3>
-        <p>Chicago history on a map, from 1780 to today.</p>
-        <p class="meta">TypeScript</p>
-      </li>
-      <li>
-        <h3><a href="https://all-my-flights.vercel.app/">All My Flights</a></h3>
-        <p>A personal flight log with stats and a route map.</p>
-        <p class="meta">Next.js · <a href="https://github.com/willyclayton/all-my-flights">code</a></p>
-      </li>
-      <li>
-        <h3><a href="https://github.com/willyclayton/flight-aware">Flight Aware</a></h3>
-        <p>A live flight tracker that costs nothing to run.</p>
-        <p class="meta">TypeScript</p>
-      </li>
-      <li>
-        <h3><a href="https://navy-ship-tracker.vercel.app">Carrier Tracker</a></h3>
-        <p>Where the USS George Washington is right now.</p>
-        <p class="meta">TypeScript · <a href="https://github.com/willyclayton/navy-ship-tracker">code</a></p>
-      </li>
-      <li>
-        <h3><a href="https://georgia-swarm.vercel.app/">Georgia Swarm Fan App</a></h3>
-        <p>Scores, roster and highlights for an NLL lacrosse team.</p>
-        <p class="meta">Next.js · <a href="https://github.com/willyclayton/georgia-swarm">code</a></p>
-      </li>
-      <li>
-        <h3><a href="https://gt-football.vercel.app">Georgia Tech Football 2026</a></h3>
-        <p>Schedule, depth chart and scores for the 2026 season.</p>
-        <p class="meta">Expo · <a href="https://github.com/willyclayton/georgia-tech-football-2026">code</a></p>
-      </li>
-      <li>
-        <h3><a href="https://effortless-parfait-18ceea.netlify.app/">Personal Dashboard</a></h3>
-        <p>Trains, weather and scores on a wall-mounted tablet.</p>
-        <p class="meta">HTML</p>
-      </li>
-      <li>
-        <h3><a href="https://github.com/willyclayton/claude-test">Chicago Train Tracker</a></h3>
-        <p>Which southbound train at Diversey you can still catch.</p>
-        <p class="meta">Python</p>
-      </li>
-      <li>
-        <h3><a href="https://matt-trading.onrender.com/">Stock Trader Assistant</a></h3>
-        <p>Tracks a set of trading rules to time trades.</p>
-        <p class="meta">Python</p>
-      </li>
-      <li>
-        <h3><a href="https://sports-tracker-bd1d0.web.app/">Sports Tracker</a></h3>
-        <p>How often your team wins at the games you attend.</p>
-        <p class="meta">School project</p>
-      </li>
-    </ul>
+    <div class="rows">
+      <details class="row">
+        <summary><span class="n">The Bracket Lab</span><span class="y">AI</span></summary>
+        <div class="body"><p>Eight AI models pick the March Madness bracket, scored live.</p><p class="meta"><a href="https://the-bracket-lab.vercel.app/">open ↗</a><a href="https://github.com/willyclayton/the-bracket-lab">code ↗</a></p></div>
+      </details>
+      <details class="row">
+        <summary><span class="n">Masters 2026</span><span class="y">AI</span></summary>
+        <div class="body"><p>Three AI models and live odds for the Masters.</p><p class="meta"><a href="https://green-jacket-lab.vercel.app/">open ↗</a><a href="https://github.com/willyclayton/masters-2026">code ↗</a></p></div>
+      </details>
+      <details class="row">
+        <summary><span class="n">Movie Recommender</span><span class="y">AI</span></summary>
+        <div class="body"><p>Picks a movie based on your mood.</p><p class="meta"><a href="https://movie-picker-seven-gilt.vercel.app">open ↗</a><a href="https://github.com/willyclayton/movie-picker">code ↗</a></p></div>
+      </details>
+      <details class="row">
+        <summary><span class="n">Chicago Time Map</span><span class="y">maps</span></summary>
+        <div class="body"><p>Chicago history on a map, 1780 to today.</p><p class="meta"><a href="https://github.com/willyclayton/chicago-history">code ↗</a></p></div>
+      </details>
+      <details class="row">
+        <summary><span class="n">All My Flights</span><span class="y">maps</span></summary>
+        <div class="body"><p>A personal flight log with a route map.</p><p class="meta"><a href="https://all-my-flights.vercel.app/">open ↗</a><a href="https://github.com/willyclayton/all-my-flights">code ↗</a></p></div>
+      </details>
+      <details class="row">
+        <summary><span class="n">Flight Aware</span><span class="y">maps</span></summary>
+        <div class="body"><p>A live flight tracker that costs nothing to run.</p><p class="meta"><a href="https://github.com/willyclayton/flight-aware">code ↗</a></p></div>
+      </details>
+      <details class="row">
+        <summary><span class="n">Carrier Tracker</span><span class="y">maps</span></summary>
+        <div class="body"><p>Where the USS George Washington is right now.</p><p class="meta"><a href="https://navy-ship-tracker.vercel.app">open ↗</a><a href="https://github.com/willyclayton/navy-ship-tracker">code ↗</a></p></div>
+      </details>
+      <details class="row">
+        <summary><span class="n">Georgia Swarm</span><span class="y">sports</span></summary>
+        <div class="body"><p>Scores and roster for an NLL lacrosse team.</p><p class="meta"><a href="https://georgia-swarm.vercel.app/">open ↗</a><a href="https://github.com/willyclayton/georgia-swarm">code ↗</a></p></div>
+      </details>
+      <details class="row">
+        <summary><span class="n">GT Football 2026</span><span class="y">sports</span></summary>
+        <div class="body"><p>Schedule, depth chart and scores for the season.</p><p class="meta"><a href="https://gt-football.vercel.app">open ↗</a><a href="https://github.com/willyclayton/georgia-tech-football-2026">code ↗</a></p></div>
+      </details>
+      <details class="row">
+        <summary><span class="n">Sports Tracker</span><span class="y">sports</span></summary>
+        <div class="body"><p>How often your team wins at games you attend.</p><p class="meta"><a href="https://sports-tracker-bd1d0.web.app/">open ↗</a></p></div>
+      </details>
+      <details class="row">
+        <summary><span class="n">Wall Dashboard</span><span class="y">chicago</span></summary>
+        <div class="body"><p>Trains, weather and scores on a wall tablet.</p><p class="meta"><a href="https://effortless-parfait-18ceea.netlify.app/">open ↗</a></p></div>
+      </details>
+      <details class="row">
+        <summary><span class="n">Train Tracker</span><span class="y">chicago</span></summary>
+        <div class="body"><p>Which train at Diversey you can still catch.</p><p class="meta"><a href="https://github.com/willyclayton/claude-test">code ↗</a></p></div>
+      </details>
+      <details class="row">
+        <summary><span class="n">Trade Assistant</span><span class="y">tools</span></summary>
+        <div class="body"><p>Checks trading rules to time trades.</p><p class="meta"><a href="https://matt-trading.onrender.com/">open ↗</a></p></div>
+      </details>
+    </div>
   </section>
 
   <!-- ABOUT -->
   <section id="about" class="panel" aria-labelledby="about-h">
-    <h2 id="about-h" class="panel-title">About</h2>
-    <p class="bio">I love to learn and tinker with new things, which is why I built this site. It's a place to share my thoughts, show off my work, and (most importantly) be able to tell people "yeah, I've got a website."</p>
-    <p class="plain">Based in Chicago. Outside of work: golf, the Braves, Georgia Tech sports, skiing, photography and woodworking.</p>
+    <h2 id="about-h" class="panel-title"><span class="sr-only">About</span><span class="scr" aria-hidden="true">About</span></h2>
+    <p class="bio">I love to learn and tinker with new things.</p>
 
-    <h2 class="sub-title" id="testimonials-h">Real testimonials from real people</h2>
-    <div class="quotes" aria-labelledby="testimonials-h">
-      <ul class="quote-list">
-        <li><blockquote>"Works with data. Builds things. Talks about it at a normal volume. Rare."</blockquote><p class="who">The Internet</p></li>
-        <li><blockquote>"I asked him to build me a dashboard and he came back with a full AI-powered bracket prediction platform. I just needed a bar chart."</blockquote><p class="who">Unnamed Stakeholder</p></li>
-        <li><blockquote>"I don't know what he does but he's very convincing about it."</blockquote><p class="who">His Dad</p></li>
-        <li><blockquote>"Will has skills. Multiple, even."</blockquote><p class="who">A Reference Who Was Not Prepped</p></li>
-        <li><blockquote>"Invited him on a camping trip. He brought a portable monitor."</blockquote><p class="who">A College Buddy</p></li>
-        <li><blockquote>"Will Clayton is, without question, one of the data consultants of all time."</blockquote><p class="who">A Very Real Person</p></li>
-        <li><blockquote>"Survived Georgia Tech's analytics program while working full time. Still can't parallel park."</blockquote><p class="who">His Wife</p></li>
-        <li><blockquote>"Built a spreadsheet ranking every Ikon Pass mountain by 'value per vertical foot.' Still goes to the same three."</blockquote><p class="who">A Travel Companion</p></li>
-        <li><blockquote>"He knows the Braves' entire 40-man roster but not his neighbor's name."</blockquote><p class="who">His Apartment Building</p></li>
-        <li><blockquote>"Spent 40 minutes on the practice green and called it 'calibration.'"</blockquote><p class="who">The Group Behind Him</p></li>
-      </ul>
-      <p class="fine">All testimonials are 100% real and were definitely not written by the site owner.</p>
+    <div class="rows">
+      <details class="row">
+        <summary><span class="n">More about me</span><span class="y"></span></summary>
+        <div class="body"><p>Based in Chicago. Golf, the Braves, Georgia Tech sports, skiing, photography and woodworking. I built this site to tell people "yeah, I've got a website."</p></div>
+      </details>
+      <details class="row">
+        <summary><span class="n">What people say</span><span class="y"></span></summary>
+        <div class="body quotes">
+          <ul class="quote-list">
+            <li><blockquote>"Works with data. Builds things. Talks about it at a normal volume. Rare."</blockquote><p class="who">The Internet</p></li>
+            <li><blockquote>"I asked him to build me a dashboard and he came back with a full AI-powered bracket prediction platform. I just needed a bar chart."</blockquote><p class="who">Unnamed Stakeholder</p></li>
+            <li><blockquote>"I don't know what he does but he's very convincing about it."</blockquote><p class="who">His Dad</p></li>
+            <li><blockquote>"Will has skills. Multiple, even."</blockquote><p class="who">A Reference Who Was Not Prepped</p></li>
+            <li><blockquote>"Invited him on a camping trip. He brought a portable monitor."</blockquote><p class="who">A College Buddy</p></li>
+            <li><blockquote>"Will Clayton is, without question, one of the data consultants of all time."</blockquote><p class="who">A Very Real Person</p></li>
+            <li><blockquote>"Survived Georgia Tech's analytics program while working full time. Still can't parallel park."</blockquote><p class="who">His Wife</p></li>
+            <li><blockquote>"Built a spreadsheet ranking every Ikon Pass mountain by 'value per vertical foot.' Still goes to the same three."</blockquote><p class="who">A Travel Companion</p></li>
+            <li><blockquote>"He knows the Braves' entire 40-man roster but not his neighbor's name."</blockquote><p class="who">His Apartment Building</p></li>
+            <li><blockquote>"Spent 40 minutes on the practice green and called it 'calibration.'"</blockquote><p class="who">The Group Behind Him</p></li>
+          </ul>
+          <p class="fine">100% real. Definitely not written by the site owner.</p>
+        </div>
+      </details>
     </div>
   </section>
 </main>
