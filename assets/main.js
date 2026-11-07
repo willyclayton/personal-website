@@ -152,7 +152,6 @@
     // Keep each line to 21 characters or fewer so it fits the reserved width.
     const lines = [
       'a solutions engineer.',
-      'ex-Accenture.',
       'a Georgia Tech grad.',
       'based in Chicago.',
       'a Braves fan.',
