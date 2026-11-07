@@ -320,14 +320,12 @@
     const list = quotes.querySelector('.quote-list');
     const controls = document.createElement('div');
     controls.className = 'deck-controls';
-    controls.innerHTML = '<button type="button">another one</button><span class="count"></span>';
+    controls.innerHTML = '<button type="button">another one</button>';
     list.after(controls);
     list.setAttribute('aria-live', 'polite');
-    const count = controls.querySelector('.count');
     let i = Math.floor(Math.random() * items.length);
     const render = () => {
       items.forEach((li, n) => li.classList.toggle('on', n === i));
-      count.textContent = (i + 1) + ' / ' + items.length;
     };
     controls.querySelector('button').addEventListener('click', () => {
       i = (i + 1) % items.length;

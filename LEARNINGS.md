@@ -35,14 +35,21 @@ GitHub Pages would also work: the repo is public, so it's free. Setup there is S
 
 ## Navigation pass
 
-Scrolled every tab on a phone and a desktop with Playwright. The pinned tabs worked; these didn't:
+Scrolled every tab on a phone and a desktop with Playwright. What stuck:
 
-- **Dead ends.** The bottom of Work, Projects and About had nowhere to go. Each now ends with a "next" link (Work → Projects → About → Home).
-- **Home had no next step.** Only the small grey tabs in the corner. Home now has "work · projects · about" links under the hello, like the old site's bottom links. Navigation only, no details.
 - **Tiny tap targets.** Project names were 22 px tall and "code" links about 30 px. The whole project row is now the tap target, and "code" has a 47×45 px hit area without looking bigger.
-- **Leaving the site without warning.** Project names now end in ↗.
 - **"Clients +" looked like a label.** The expand buttons are now full-color text that underlines on hover.
-- **Header far from the content on wide screens.** The name and tabs now line up with the content column.
+- **Header far from the content on wide screens.** The tabs now line up with the content column.
+
+What got reverted: "next" links at the end of each tab, work/projects/about links under the hello, and ↗ after project names. Will's verdict: "multiple repeat links on first page." Home ended up with every tab linked twice, plus a name in the header that also went home. Lesson: the pinned tabs already solve "where next"; a second set of the same links is clutter, not help.
+
+## One place per link
+
+After the revert, every control appears once per tab (checked with a script at 320, 390 and 1280 px):
+
+- **Header:** the four tabs. Nothing else.
+- **Footer:** "Will Clayton", LinkedIn, GitHub, Photos, theme toggle.
+- **Removed:** the "will clayton" header link (duplicate of "home"), About's Contact paragraph (duplicate of the footer), "More on GitHub" under Projects (duplicate of the footer), the testimonial counter.
 
 The typewriter went from 4 lines to 11. Every line is a fact from Will's material: his old site ("a passionate golfer", "a problem solver", "a lifelong learner"), his Notion page ("a tinkerer", woodworking, skiing), his job history and Chicago. Each stays at 21 characters or fewer to fit the reserved width, and the hold per line dropped from 1.6 s to 1.3 s so the full run stays around half a minute.
 

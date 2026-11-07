@@ -128,18 +128,10 @@ a:hover { text-decoration-color: currentColor; }
 }
 .bar.scrolled { border-bottom-color: var(--line); }
 
-.mark {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  text-decoration: none;
-}
-
 .tabs {
   position: relative;
   display: flex;
   gap: 1.5rem;
-  margin-left: auto;
 }
 .tabs a {
   display: inline-flex;
@@ -166,7 +158,7 @@ a:hover { text-decoration-color: currentColor; }
   place-items: center;
   width: 44px;
   height: 44px;
-  margin-right: -.6rem;
+  margin: 0 -.8rem 0 -.5rem;
   border: 0;
   background: none;
   color: var(--muted);
@@ -279,20 +271,6 @@ main:focus, .panel [tabindex="-1"]:focus { outline: none; }
 .type-toggle:hover { color: var(--fg); }
 html:not(.js) .type-toggle { display: none; }
 
-/* Where to go from Home, without giving anything away. */
-.home-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 1.5rem;
-  margin-top: 1rem;
-  font-size: 1rem;
-}
-.home-links a { display: inline-block; padding: .6rem 0; }
-
-/* "next: projects →" at the end of each tab, so nobody hits a dead end. */
-.next { margin-top: 3.5rem; font-family: var(--mono); font-size: .9375rem; }
-.next a { display: inline-block; padding: .6rem 0; }
-
 /* ---------- Work ---------- */
 
 .timeline {
@@ -352,17 +330,13 @@ html:not(.js) .type-toggle { display: none; }
 }
 .projects li { position: relative; padding: 1rem 0; border-bottom: 1px solid var(--line); }
 .projects h3 { font-size: 1.0625rem; font-weight: 600; letter-spacing: -.01em; }
-/* ↗ says the link leaves the site. */
-.projects h3::after { content: "↗"; margin-left: .35em; font-family: var(--mono); font-size: .85em; font-weight: 400; color: var(--muted); }
 /* The whole row opens the project, so it's an easy tap on a phone. */
 .projects h3 a::after { content: ""; position: absolute; inset: 0; }
 .projects li:hover h3 a { text-decoration-color: currentColor; }
-.projects li:hover h3::after { color: var(--fg); }
 .projects h3 + p { margin-top: .2rem; }
 .meta { margin-top: .35rem; font-family: var(--mono); font-size: .8125rem; color: var(--muted); }
 /* Sits above the row link, with a bigger tap area than it looks. */
 .meta a { position: relative; z-index: 1; display: inline-block; padding: .75rem .5rem; margin: -.75rem -.5rem; color: var(--fg); }
-.after { margin-top: 1.5rem; color: var(--muted); }
 
 /* ---------- About ---------- */
 
@@ -406,7 +380,6 @@ html:not(.js) .type-toggle { display: none; }
   text-underline-offset: .25em;
   cursor: pointer;
 }
-.deck-controls .count { color: var(--muted); }
 .fine { margin-top: .75rem; color: var(--muted); font-size: .875rem; }
 
 /* ---------- Footer ---------- */
@@ -424,33 +397,18 @@ html:not(.js) .type-toggle { display: none; }
   font-size: .8125rem;
   color: var(--muted);
 }
-.foot-links { display: flex; gap: 1.25rem; }
+.foot-links { display: flex; align-items: center; gap: 1.25rem; }
 .foot-links a { display: inline-block; padding: .8rem 0; }
 
 /* ---------- Phones ---------- */
 
 @media (max-width: 40rem) {
-  /* Height of the tab row that stays pinned while scrolling. */
-  :root { --bar-h: 3rem; }
-
-  /* Two rows: name and theme button, then the tabs. The negative top lets the
-     first row scroll away while the tabs stay put. A bottom bar would fight
-     the iOS Safari toolbar, so the tabs stay on top. */
-  .bar {
-    flex-wrap: wrap;
-    row-gap: 0;
-    height: auto;
-    top: calc(-3rem - env(safe-area-inset-top));
-  }
-  .mark { height: 3rem; }
-  .theme { margin-left: auto; }
-  .tabs {
-    order: 3;
-    flex: 1 0 100%;
-    justify-content: space-between;
-    gap: 0;
-    margin: 0;
-  }
+  /* One row of tabs across the top. A bottom bar would fight the iOS Safari
+     toolbar, so the tabs stay on top. */
+  :root { --bar-h: 3.25rem; }
+  .tabs { flex: 1; justify-content: space-between; gap: 0; }
+  .foot { flex-wrap: wrap; }
+  .foot-links { gap: 1rem; }
 
   .hero { font-size: clamp(1.75rem, 8.4vw, 2.25rem); }
   .role { grid-template-columns: minmax(0, 1fr); gap: .25rem; }
