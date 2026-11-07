@@ -134,18 +134,26 @@
     const toggle = document.querySelector('.type-toggle');
     const NAME = 'Will.';
     // Typed in order after the name, then it settles back on the name and stops.
+    // Keep each line to 21 characters or fewer so it fits the reserved width.
     const lines = [
       'a solutions engineer.',
+      'ex-Accenture.',
       'a Georgia Tech grad.',
-      'a lifelong learner.',
+      'based in Chicago.',
+      'a Braves fan.',
       'a passionate golfer.',
+      'a skier.',
+      'a woodworker.',
+      'a tinkerer.',
+      'a problem solver.',
+      'a lifelong learner.',
       NAME,
     ];
     const BASE = 55;      // ms per character, plus up to JITTER of randomness
     const JITTER = 45;
     const PUNCT = 260;    // a beat after punctuation
     const ERASE = 30;
-    const HOLD = 1600;    // how long each line stays up
+    const HOLD = 1300;    // how long each line stays up
     const FIRST = 1500;   // how long the name stays up before the first line
 
     let timer = 0;

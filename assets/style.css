@@ -119,7 +119,8 @@ a:hover { text-decoration-color: currentColor; }
   align-items: center;
   gap: 1.5rem;
   height: var(--bar-h);
-  padding: env(safe-area-inset-top) var(--gutter) 0;
+  /* Line the name and tabs up with the content column on wide screens. */
+  padding: env(safe-area-inset-top) max(var(--gutter), calc((100% - 46rem) / 2 + var(--gutter))) 0;
   background: var(--bg);
   border-bottom: 1px solid transparent;
   font-family: var(--mono);
@@ -278,6 +279,20 @@ main:focus, .panel [tabindex="-1"]:focus { outline: none; }
 .type-toggle:hover { color: var(--fg); }
 html:not(.js) .type-toggle { display: none; }
 
+/* Where to go from Home, without giving anything away. */
+.home-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.5rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+.home-links a { display: inline-block; padding: .6rem 0; }
+
+/* "next: projects →" at the end of each tab, so nobody hits a dead end. */
+.next { margin-top: 3.5rem; font-family: var(--mono); font-size: .9375rem; }
+.next a { display: inline-block; padding: .6rem 0; }
+
 /* ---------- Work ---------- */
 
 .timeline {
@@ -315,14 +330,13 @@ html:not(.js) .type-toggle { display: none; }
   min-height: 44px;
   font-family: var(--mono);
   font-size: .875rem;
-  color: var(--muted);
   cursor: pointer;
   list-style: none;
 }
 .more summary::-webkit-details-marker { display: none; }
 .more summary::after { content: "+"; }
 .more[open] summary::after { content: "−"; }
-.more summary:hover { color: var(--fg); }
+.more summary:hover { text-decoration: underline; text-decoration-color: var(--link); text-decoration-thickness: .16em; text-underline-offset: .25em; }
 .more[open] > :not(summary) { animation: rise .3s var(--ease) both; }
 .detail dt { margin-top: .9rem; font-weight: 600; }
 .detail dt:first-child { margin-top: .25rem; }
@@ -336,11 +350,18 @@ html:not(.js) .type-toggle { display: none; }
   list-style: none;
   border-top: 1px solid var(--line);
 }
-.projects li { padding: 1rem 0; border-bottom: 1px solid var(--line); }
+.projects li { position: relative; padding: 1rem 0; border-bottom: 1px solid var(--line); }
 .projects h3 { font-size: 1.0625rem; font-weight: 600; letter-spacing: -.01em; }
+/* ↗ says the link leaves the site. */
+.projects h3::after { content: "↗"; margin-left: .35em; font-family: var(--mono); font-size: .85em; font-weight: 400; color: var(--muted); }
+/* The whole row opens the project, so it's an easy tap on a phone. */
+.projects h3 a::after { content: ""; position: absolute; inset: 0; }
+.projects li:hover h3 a { text-decoration-color: currentColor; }
+.projects li:hover h3::after { color: var(--fg); }
 .projects h3 + p { margin-top: .2rem; }
 .meta { margin-top: .35rem; font-family: var(--mono); font-size: .8125rem; color: var(--muted); }
-.meta a { display: inline-block; padding: .25rem 0; color: var(--fg); }
+/* Sits above the row link, with a bigger tap area than it looks. */
+.meta a { position: relative; z-index: 1; display: inline-block; padding: .75rem .5rem; margin: -.75rem -.5rem; color: var(--fg); }
 .after { margin-top: 1.5rem; color: var(--muted); }
 
 /* ---------- About ---------- */
@@ -404,7 +425,7 @@ html:not(.js) .type-toggle { display: none; }
   color: var(--muted);
 }
 .foot-links { display: flex; gap: 1.25rem; }
-.foot-links a { display: inline-block; padding: .6rem 0; }
+.foot-links a { display: inline-block; padding: .8rem 0; }
 
 /* ---------- Phones ---------- */
 
