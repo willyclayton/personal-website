@@ -14,6 +14,25 @@ Notes from planning, researching, building and testing this site, November 2026.
 | No project images. | The images in Notion were press photos of real athletes and stock photos. Real screenshots weren't possible from the cloud session (see "Couldn't check"). |
 | No made-up copy. | Every line on the site comes from Will's Notion page, his old site, his GitHub repo list or his spec. Where there wasn't enough to say (the Omni role), the entry stays short. |
 
+## Hosting: Vercel over GitHub Pages
+
+Both are free for a public static site, and both handle a custom domain and HTTPS. Vercel wins here for three reasons:
+
+- **Preview links.** Vercel builds a separate URL for every branch and pull request, so a change (or the `mockups/` folder) can be checked on a phone before it goes live. GitHub Pages publishes one branch and has no previews.
+- **Already in use.** About a dozen of Will's projects (The Bracket Lab, All My Flights, Georgia Swarm, ...) are on Vercel, so it's the same account and workflow.
+- **Simple domain setup.** www-to-root redirect and HTTPS are settings in the dashboard.
+
+GitHub Pages would also work: the repo is public, so it's free. Setup there is Settings → Pages, four A records (185.199.108.153 to 185.199.111.153) and a `www` CNAME to `willyclayton.github.io`. One caution: ten of Will's repos already use GitHub Pages at `willyclayton.github.io/<repo>`. Putting the custom domain on this repo is fine, but putting it on a `willyclayton.github.io` user-site repo would move all ten under `willyclayton.com/<repo>`.
+
+## Cleanup pass (minimalist, nothing given away on Home)
+
+- **Home** is only the typewriter hello, centered. No intro paragraph, no at-a-glance list, no links in the body. LinkedIn and GitHub moved to the footer on every tab.
+- **Work** keeps four Accenture bullets instead of six. Coursework and college activities are gone; the MS line just says it was completed while working full time.
+- **Projects** dropped the filter buttons and the "Learned" lines. Each project is a name, one sentence, and its stack and code link.
+- **About** is the bio, one line of interests, the testimonials (the "Works with data" quote is now one of them), and contact.
+- The link-preview image only says "hello.... I'm Will Clayton." and the domain.
+- Unused CSS and the filter JavaScript were deleted.
+
 ## Content: what was cut, and why
 
 The first draft had AI-sounding filler. Will asked for no AI slop, so these went:

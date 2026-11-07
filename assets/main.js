@@ -1,4 +1,4 @@
-// willyclayton.com: tabs, typewriter, theme, project filters, testimonials.
+// willyclayton.com: tabs, typewriter, theme, testimonials.
 // Everything is plain DOM. With JavaScript off, every section still shows.
 (() => {
   const root = document.documentElement;
@@ -303,34 +303,6 @@
   const onScroll = () => bar.classList.toggle('scrolled', window.scrollY > 4);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-
-  /* ---------------- Project filters ---------------- */
-
-  const filterBtns = Array.from(document.querySelectorAll('.filters button'));
-  const projects = Array.from(document.querySelectorAll('.project'));
-  const status = document.querySelector('.filter-status');
-
-  filterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const f = btn.dataset.filter;
-      filterBtns.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-      let shown = 0;
-      projects.forEach((p) => {
-        const match = f === 'all' || p.dataset.tags.split(' ').includes(f);
-        p.hidden = !match;
-        p.classList.remove('pop');
-        if (match) {
-          p.style.setProperty('--i', Math.min(shown, 10));
-          void p.offsetWidth;
-          if (!reduceMotion.matches) p.classList.add('pop');
-          shown += 1;
-        }
-      });
-      status.textContent = f === 'all'
-        ? 'Showing all ' + shown + ' projects'
-        : 'Showing ' + shown + ' ' + btn.textContent + ' projects';
-    });
-  });
 
   /* ---------------- Testimonials: one at a time ---------------- */
 

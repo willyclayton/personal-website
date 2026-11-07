@@ -1,6 +1,6 @@
 # willyclayton.com
 
-My personal site. One static page with four tabs (Home, Work, Projects, About), a typewriter intro, and no framework or build step.
+My personal site. One static page with four tabs (Home, Work, Projects, About) and no framework or build step. Home is only the typewriter hello; everything else is one click away.
 
 ## Files
 
@@ -8,7 +8,7 @@ My personal site. One static page with four tabs (Home, Work, Projects, About), 
 | --- | --- |
 | `index.html` | All the content. Every tab is real HTML, so search engines and no-JS visitors see everything. |
 | `assets/style.css` | Styles, light and dark themes, phone layout. |
-| `assets/main.js` | Tabs, typewriter, theme toggle, project filters, testimonials. |
+| `assets/main.js` | Tabs, typewriter, theme toggle, testimonials. |
 | `assets/fonts/` | Geist and Geist Mono (SIL Open Font License, see `LICENSE-OFL.txt`). |
 | `assets/og.png` | The preview image for links shared on LinkedIn, iMessage, Slack and so on. |
 | `404.html` | Shown for any URL that doesn't exist. |
@@ -19,7 +19,7 @@ Everything you'd want to change is in `index.html`:
 
 - **Typewriter lines:** the `lines` list near the top of the typewriter section in `assets/main.js`.
 - **A new job:** copy one `<li class="role">` block in the Work section.
-- **A new project:** copy one `<li class="project">` block in the Projects section. `data-tags` decides which filters it shows under: `sports`, `ai`, `maps`, `chicago`.
+- **A new project:** copy one `<li>` block in the Projects list.
 - **A new testimonial:** add an `<li>` to the `quote-list`.
 
 To preview locally, run `python3 -m http.server` in this folder and open http://localhost:8000.
@@ -38,4 +38,8 @@ To preview locally, run `python3 -m http.server` in this folder and open http://
 
 ## Hosting
 
-Static files only. On Vercel: import the repo, framework preset "Other", no build command, output directory is the repo root. GitHub Pages also works from the repo root.
+Static files only, hosted on Vercel (why: see `LEARNINGS.md`).
+
+1. In Vercel, import `willyclayton/personal-website`. Framework preset "Other", no build command, output directory is the repo root.
+2. Settings → Domains: add `willyclayton.com` and `www.willyclayton.com`, with www redirecting to the root.
+3. At GoDaddy: turn off the forwarding to Notion, set the `@` A record to the value Vercel shows (usually `76.76.21.21`), delete any `@` AAAA records, and point the `www` CNAME at the target Vercel shows. Leave the `photos` CNAME alone.
