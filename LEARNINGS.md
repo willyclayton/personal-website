@@ -105,6 +105,7 @@ Tested with Playwright at 320, 390, 768 and 1280 px, light and dark, with motion
 
 ## Open items
 
+- Pick one variation per tab from `mockups/` (5 each for Home, Work, Projects, About), then rebuild the site from that mix.
 - Omni role: one line now. Needs 2 to 3 real bullets from Will.
 - Résumé PDF.
 - Whether to list an email address.

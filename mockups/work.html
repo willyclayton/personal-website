@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Mockups: Work</title>
+<style>
+/* ---------- Mockup frame (shared) ---------- */
+@font-face { font-family: "Geist"; src: url(fonts/geist.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Geist Mono"; src: url(fonts/geist-mono.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Big Shoulders Display"; src: url(fonts/big-shoulders-display-800.woff2) format("woff2"); font-weight: 800; font-display: swap; }
+@font-face { font-family: "Instrument Serif"; src: url(fonts/instrument-serif-400.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+:root { --sans: "Geist", system-ui, sans-serif; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --display: "Big Shoulders Display", "Arial Narrow", sans-serif; --serif: "Instrument Serif", Georgia, serif; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #e8e8eb; color: #111; font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+h2, h3, h4, p, ul, ol, dl, dd { margin: 0; }
+.mk-bar { position: sticky; top: 0; z-index: 50; display: flex; flex-wrap: wrap; align-items: center; gap: 0 1.25rem; padding: .25rem 1rem; background: #111; color: #fff; font: 500 .8125rem/1.4 var(--mono); }
+.mk-bar a { display: inline-block; padding: .65rem 0; color: #fff; opacity: .6; text-decoration: none; }
+.mk-bar a[aria-current="page"] { opacity: 1; text-decoration: underline; text-underline-offset: .35em; }
+.mk-bar .jump { display: flex; gap: 1rem; margin-left: auto; }
+.mk { padding: 2.5rem clamp(.75rem, 3vw, 2rem) 0; scroll-margin-top: 3rem; }
+.mk-label { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .75rem; max-width: 72rem; margin: 0 auto .75rem; font: 400 .875rem/1.5 var(--mono); color: #444; }
+.mk-label b { color: #111; font-weight: 600; }
+.mk-frame { max-width: 72rem; margin: 0 auto; overflow: hidden; border-radius: 10px; background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 12px 32px rgba(0,0,0,.08); }
+.mk-end { height: 5rem; }
+.pad { padding: clamp(1.5rem, 5vw, 3.5rem); }
+.title { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 600; letter-spacing: -.03em; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* ---------- Work 1: classic résumé ---------- */
+.w1 { max-width: 46rem; }
+.w1 h3.sec { margin: 2.5rem 0 .75rem; padding-bottom: .4rem; border-bottom: 2px solid #111; font: 600 .8125rem/1 var(--mono); letter-spacing: .02em; }
+.w1 .r { padding: 1rem 0; border-bottom: 1px solid #e6e6e9; }
+.w1 .top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .1rem 1rem; }
+.w1 h4 { font-size: 1.0625rem; font-weight: 600; }
+.w1 .d { font: 400 .875rem/1.6 var(--mono); color: #5f6368; }
+.w1 .o { color: #5f6368; }
+.w1 ul { margin-top: .5rem; padding-left: 1.1rem; line-height: 1.55; }
+.w1 li { margin-top: .3rem; }
+.w1 .tools { margin-top: .5rem; line-height: 1.6; }
+
+/* ---------- Work 2: vertical timeline ---------- */
+.w2 { position: relative; max-width: 52rem; margin: 2rem auto 0; padding: 0; list-style: none; }
+.w2::before { content: ""; position: absolute; top: .5rem; bottom: .5rem; left: 7.5rem; width: 2px; background: #e6e6e9; }
+.w2 li { position: relative; display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 2.25rem; padding: .25rem 0 1.75rem; }
+.w2 .yr { padding-top: .2rem; text-align: right; font: 500 .875rem/1.4 var(--mono); color: #5f6368; }
+.w2 .dot { position: absolute; left: calc(7.5rem - 5px); top: .45rem; width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 2px solid #111; }
+.w2 li.school .dot { border-color: #3f7fa3; background: #b3ddf2; }
+.w2 li.now .dot { background: #111; }
+.w2 details summary { list-style: none; cursor: pointer; }
+.w2 details summary::-webkit-details-marker { display: none; }
+.w2 h4 { font-size: 1.125rem; font-weight: 600; }
+.w2 .o { color: #5f6368; }
+.w2 .more { display: inline-block; margin-top: .35rem; font: 400 .8125rem/1 var(--mono); color: #5f6368; }
+.w2 details[open] .more { display: none; }
+.w2 ul { margin-top: .6rem; padding-left: 1.1rem; line-height: 1.55; }
+.w2 li li { display: list-item; padding: 0; margin-top: .3rem; }
+.w2 .tag { display: inline-block; margin-left: .4rem; padding: .05rem .4rem; border-radius: 4px; background: #eef6fb; color: #1f5f80; font: 500 .6875rem/1.5 var(--mono); vertical-align: .15em; }
+@media (max-width: 40rem) {
+  .w2::before { left: 5px; }
+  .w2 li { grid-template-columns: minmax(0, 1fr); gap: .2rem; padding-left: 1.75rem; }
+  .w2 .yr { text-align: left; }
+  .w2 .dot { left: 0; }
+}
+
+/* ---------- Work 3: Gantt chart ---------- */
+.w3 .chart { margin-top: 2rem; }
+.w3 .axis, .w3 .row { display: grid; grid-template-columns: minmax(7rem, 13rem) minmax(0, 1fr); gap: 1rem; align-items: center; }
+.w3 .axis .ticks { position: relative; height: 1.5rem; font: 400 .75rem/1 var(--mono); color: #5f6368; }
+.w3 .axis .ticks span { position: absolute; top: .25rem; transform: translateX(-50%); }
+.w3 .row { width: 100%; min-height: 44px; padding: .35rem 0; border: 0; border-top: 1px solid #f0f0f2; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.w3 .row:hover .bar, .w3 .row[aria-pressed="true"] .bar { filter: brightness(.85); }
+.w3 .row[aria-pressed="true"] .lab { font-weight: 600; }
+.w3 .lab { font-size: .9375rem; line-height: 1.3; }
+.w3 .lab span { display: block; font: 400 .75rem/1.4 var(--mono); color: #5f6368; }
+.w3 .track { position: relative; height: 1.25rem; background: repeating-linear-gradient(90deg, transparent 0, transparent calc(100% / 12 - 1px), #f0f0f2 calc(100% / 12 - 1px), #f0f0f2 calc(100% / 12)); }
+.w3 .bar { position: absolute; top: 0; bottom: 0; min-width: 6px; border-radius: 3px; background: #111; transition: filter .2s; }
+.w3 .bar.school { background: #7fb9d8; }
+.w3 .bar.intern { background: #9aa0a6; }
+.w3 .bar.now { background: #e4002b; }
+.w3 .key { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin-top: 1rem; font: 400 .8125rem/1.6 var(--mono); color: #5f6368; }
+.w3 .key i { display: inline-block; width: .8rem; height: .8rem; margin-right: .35rem; border-radius: 2px; vertical-align: -.1rem; }
+.w3 .detail { margin-top: 1.5rem; padding: 1.25rem; border-radius: 8px; background: #f5f5f6; min-height: 9rem; }
+.w3 .detail h4 { font-size: 1.125rem; }
+.w3 .detail .o { color: #5f6368; margin-top: .15rem; }
+.w3 .detail ul { margin-top: .6rem; padding-left: 1.1rem; line-height: 1.55; }
+.w3 .detail li { margin-top: .25rem; }
+@media (max-width: 40rem) {
+  .w3 .axis, .w3 .row { grid-template-columns: minmax(0, 1fr); gap: .3rem; }
+  .w3 .axis > div:first-child { display: none; }
+}
+
+/* ---------- Work 4: accordion ---------- */
+.w4 { max-width: 46rem; margin-top: 1.5rem; }
+.w4 h3 { margin: 2rem 0 .5rem; font: 500 .875rem/1 var(--mono); color: #5f6368; }
+.w4 details { border-top: 1px solid #e6e6e9; }
+.w4 details:last-of-type { border-bottom: 1px solid #e6e6e9; }
+.w4 summary { display: grid; grid-template-columns: minmax(0, 1fr) auto 1.5rem; gap: 1rem; align-items: center; min-height: 3.75rem; padding: .5rem 0; cursor: pointer; list-style: none; }
+.w4 summary::-webkit-details-marker { display: none; }
+.w4 summary::after { content: "+"; font: 400 1.25rem/1 var(--mono); text-align: right; transition: transform .25s; }
+.w4 details[open] summary::after { transform: rotate(45deg); }
+.w4 .n { font-weight: 600; }
+.w4 .n span { font-weight: 400; color: #5f6368; }
+.w4 .d { font: 400 .8125rem/1 var(--mono); color: #5f6368; white-space: nowrap; }
+.w4 .body { padding: 0 0 1.25rem; line-height: 1.55; animation: w4in .3s ease both; }
+.w4 .body ul { padding-left: 1.1rem; }
+.w4 .body li { margin-top: .3rem; }
+@keyframes w4in { from { opacity: 0; transform: translateY(-4px); } }
+@media (max-width: 34rem) { .w4 summary { grid-template-columns: minmax(0, 1fr) 1.5rem; } .w4 .d { grid-column: 1; grid-row: 2; } .w4 summary::after { grid-row: 1; grid-column: 2; } }
+
+/* ---------- Work 5: numbers first ---------- */
+.w5 .nums { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 0; margin-top: 2rem; border-top: 1px solid #111; }
+.w5 .num { padding: 1.25rem 1.25rem 1.25rem 0; border-bottom: 1px solid #e6e6e9; }
+.w5 .num b { display: block; font: 800 clamp(2.5rem, 6vw, 3.75rem)/.95 var(--display); letter-spacing: -.01em; }
+.w5 .num span { display: block; margin-top: .4rem; color: #333; line-height: 1.45; font-size: .9375rem; }
+.w5 .roles { margin-top: 2.5rem; }
+.w5 .roles div { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1rem; padding: .65rem 0; border-bottom: 1px solid #f0f0f2; }
+.w5 .roles .d { font: 400 .8125rem/1.6 var(--mono); color: #5f6368; }
+@media (max-width: 34rem) { .w5 .roles div { grid-template-columns: minmax(0, 1fr); gap: 0; } }
+</style>
+</head>
+<body>
+<nav class="mk-bar" aria-label="Mockups">
+  <a href="index.html">mockups</a>
+  <a href="home.html">home</a>
+  <a href="work.html" aria-current="page">work</a>
+  <a href="projects.html">projects</a>
+  <a href="about.html">about</a>
+  <span class="jump"><a href="#v1">1</a><a href="#v2">2</a><a href="#v3">3</a><a href="#v4">4</a><a href="#v5">5</a></span>
+</nav>
+
+<section class="mk" id="v1">
+  <div class="mk-label"><b>Work 1 · Classic résumé</b> Reads like a printed résumé: title, company, dates on the right, everything open.</div>
+  <div class="mk-frame"><div class="pad"><div class="w1"><h2 class="title">Work</h2><div id="w1"></div></div></div></div>
+</section>
+
+<section class="mk" id="v2">
+  <div class="mk-label"><b>Work 2 · Vertical timeline</b> Jobs and school on one line, newest first. Tap an entry to open its details.</div>
+  <div class="mk-frame"><div class="pad"><h2 class="title">Work</h2><ol class="w2" id="w2"></ol></div></div>
+</section>
+
+<section class="mk" id="v3">
+  <div class="mk-label"><b>Work 3 · Gantt chart</b> The résumé as a chart, 2015 to now. Shows the MS overlapping Accenture. Tap a row for details.</div>
+  <div class="mk-frame"><div class="pad w3"><h2 class="title">Work</h2><div class="chart" id="w3"></div><div class="key"><span><i style="background:#e4002b"></i>now</span><span><i style="background:#111"></i>work</span><span><i style="background:#9aa0a6"></i>internship</span><span><i style="background:#7fb9d8"></i>school</span></div><div class="detail" id="w3d" aria-live="polite"></div></div></div>
+</section>
+
+<section class="mk" id="v4">
+  <div class="mk-label"><b>Work 4 · Accordion</b> One line per role, everything closed. The shortest page; details on demand.</div>
+  <div class="mk-frame"><div class="pad"><h2 class="title">Work</h2><div class="w4" id="w4"></div></div></div>
+</section>
+
+<section class="mk" id="v5">
+  <div class="mk-label"><b>Work 5 · Numbers first</b> Leads with the figures from your Accenture work, then a compact list of roles.</div>
+  <div class="mk-frame"><div class="pad w5"><h2 class="title">Work</h2>
+    <div class="nums">
+      <div class="num"><b>6 yrs</b><span>data consulting at Accenture, for telecom, healthcare and aerospace clients</span></div>
+      <div class="num"><b>50+</b><span>tables across 10+ sources in BigQuery and Airflow pipelines</span></div>
+      <div class="num"><b>5% → 30%</b><span>claims-test attribute coverage after Python and SQL automation</span></div>
+      <div class="num"><b>~$55M</b><span>in savings tracked through reporting and metric governance</span></div>
+      <div class="num"><b>~2,000</b><span>systems in a migration assessment for an aerospace client</span></div>
+      <div class="num"><b>2</b><span>Georgia Tech degrees: MS Analytics and BS Mechanical Engineering</span></div>
+    </div>
+    <div class="roles" id="w5"></div>
+  </div></div>
+</section>
+
+<div class="mk-end"></div>
+
+<script>
+const ROLES = [
+  { kind: 'now', start: 2026, end: 2026.9, when: '2026 – now', title: 'Solutions Engineer', org: 'Omni Analytics', where: 'Chicago', note: 'Omni is an AI analytics platform.', bullets: [] },
+  { kind: 'work', start: 2020.5, end: 2026, when: '2020 – 2026', title: 'Data & Applied Intelligence Consultant', org: 'Accenture', where: 'Chicago and Atlanta', bullets: [
+    'Built SQL and Python analytics and KPI definitions used for weekly ops and finance decisions across telecom, healthcare and aerospace clients.',
+    'Developed BigQuery and Airflow pipelines (10+ sources, 50+ tables) to automate recurring reporting.',
+    'Created claims-testing automation in Python and SQL, raising attribute coverage from about 5% to about 30%.',
+    'Supported about $55M in savings tracking through reporting, metric governance and program measurement.',
+    'Shipped Tableau and Power BI dashboards for leadership reviews and self-service reporting.',
+    'Contributed to a migration assessment covering about 2,000 systems, with SAP HANA testing and documentation.',
+  ] },
+  { kind: 'intern', start: 2019.4, end: 2019.65, when: 'Summer 2019', title: 'Operations Engineering Intern', org: 'Lockheed Martin', where: 'Marietta, GA', bullets: [
+    'Built an interactive Tableau map of tool areas across the C-130 and F-35 production floor.',
+    'Resolved bill of materials conflicts between engineers and assembly teams.',
+  ] },
+  { kind: 'intern', start: 2018.4, end: 2018.65, when: 'Summer 2018', title: 'ERP Intern', org: 'Gulfstream Aerospace', where: 'Savannah, GA', bullets: [
+    'Regression testing during an SAP phase-in, focused on master data, forecasting and MRP.',
+    'Built an Excel macro to aggregate MRP and stock pegging data, saving about 4 hours a week of manual entry.',
+  ] },
+  { kind: 'intern', start: 2018.0, end: 2018.38, when: 'Spring 2018', title: 'Project Management Intern', org: 'Brasfield & Gorrie', where: 'Atlanta', bullets: [
+    'Project closeouts, subcontractor safety and insurance paperwork, and preconstruction estimates in Bluebeam.',
+  ] },
+];
+const EDU = [
+  { kind: 'school', start: 2022, end: 2025, when: '2022 – 2025', title: 'MS Analytics', org: 'Georgia Tech', where: 'Computational Analytics track', bullets: ['Completed over two and a half years while working full time as a consultant.'] },
+  { kind: 'school', start: 2015.6, end: 2019.4, when: '2015 – 2019', title: 'BS Mechanical Engineering', org: 'Georgia Tech', where: 'Certificate in Business Analytics', bullets: ["Men's lacrosse, Beta Theta Pi, University of Oxford study abroad, Zell Miller Scholarship."] },
+];
+const TOOLS = 'SQL, Python, BigQuery, Airflow, Tableau, Power BI, SAP, Git and GitHub, Claude Code';
+const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const list = (b) => b.length ? '<ul>' + b.map((x) => '<li>' + esc(x) + '</li>').join('') + '</ul>' : '';
+
+// Work 1
+document.getElementById('w1').innerHTML =
+  '<h3 class="sec">Experience</h3>' +
+  ROLES.map((r) => `<div class="r"><div class="top"><h4>${esc(r.title)}, ${esc(r.org)}</h4><span class="d">${r.when}</span></div><p class="o">${esc(r.where)}</p>${r.note ? '<p style="margin-top:.4rem">' + esc(r.note) + '</p>' : ''}${list(r.bullets)}</div>`).join('') +
+  '<h3 class="sec">Education</h3>' +
+  EDU.map((r) => `<div class="r"><div class="top"><h4>${esc(r.title)}, ${esc(r.org)}</h4><span class="d">${r.when}</span></div><p class="o">${esc(r.where)}</p>${list(r.bullets)}</div>`).join('') +
+  `<h3 class="sec">Tools</h3><p class="tools">${TOOLS}</p>`;
+
+// Work 2: merge jobs and school, newest first
+const all = [...ROLES, ...EDU].sort((a, b) => b.end - a.end);
+document.getElementById('w2').innerHTML = all.map((r) => `
+  <li class="${r.kind}">
+    <span class="yr">${r.when.replace('Summer ', '').replace('Spring ', '')}</span><span class="dot" aria-hidden="true"></span>
+    <details${r.kind === 'now' ? ' open' : ''}>
+      <summary><h4>${esc(r.title)}${r.kind === 'school' ? '<span class="tag">school</span>' : r.kind === 'now' ? '<span class="tag">now</span>' : ''}</h4><p class="o">${esc(r.org)} · ${esc(r.where)}</p>${(r.bullets.length || r.note) ? '<span class="more">details +</span>' : ''}</summary>
+      ${r.note ? '<p style="margin-top:.5rem">' + esc(r.note) + '</p>' : ''}${list(r.bullets)}
+    </details>
+  </li>`).join('');
+
+// Work 3: Gantt
+const Y0 = 2015, Y1 = 2027, span = Y1 - Y0;
+const pct = (y) => ((y - Y0) / span) * 100;
+const rows = [...EDU.slice().reverse(), ...ROLES.slice().reverse()].sort((a, b) => a.start - b.start);
+const ticks = []; for (let y = Y0; y <= Y1; y += 2) ticks.push(`<span style="left:${pct(y)}%">${String(y).slice(2) === '15' ? y : "'" + String(y).slice(2)}</span>`);
+document.getElementById('w3').innerHTML =
+  `<div class="axis"><div></div><div class="ticks" aria-hidden="true">${ticks.join('')}</div></div>` +
+  rows.map((r, i) => `<button type="button" class="row" data-i="${i}" aria-pressed="false"><span class="lab">${esc(r.org)}<span>${esc(r.title)} · ${r.when}</span></span><span class="track" aria-hidden="true"><span class="bar ${r.kind}" style="left:${pct(r.start)}%;width:${pct(r.end) - pct(r.start)}%"></span></span></button>`).join('');
+const w3d = document.getElementById('w3d');
+function pick(i) {
+  const r = rows[i];
+  document.querySelectorAll('#w3 .row').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.i == i)));
+  w3d.innerHTML = `<h4>${esc(r.title)}, ${esc(r.org)}</h4><p class="o">${r.when} · ${esc(r.where)}</p>${r.note ? '<p style="margin-top:.5rem">' + esc(r.note) + '</p>' : ''}${list(r.bullets)}`;
+}
+document.querySelectorAll('#w3 .row').forEach((b) => b.addEventListener('click', () => pick(b.dataset.i)));
+pick(rows.findIndex((r) => r.org === 'Accenture'));
+
+// Work 4: accordion
+const acc = (r) => `<details><summary><span class="n">${esc(r.org)} <span>· ${esc(r.title)}</span></span><span class="d">${r.when}</span></summary><div class="body"><p style="color:#5f6368">${esc(r.where)}</p>${r.note ? '<p style="margin-top:.4rem">' + esc(r.note) + '</p>' : ''}${list(r.bullets)}</div></details>`;
+document.getElementById('w4').innerHTML = '<h3>experience</h3>' + ROLES.map(acc).join('') + '<h3>education</h3>' + EDU.map(acc).join('') + `<h3>tools</h3><p>${TOOLS}</p>`;
+
+// Work 5: compact list under the numbers
+document.getElementById('w5').innerHTML = [...ROLES, ...EDU].sort((a, b) => b.end - a.end)
+  .map((r) => `<div><span class="d">${r.when}</span><span><b>${esc(r.title)}</b>, ${esc(r.org)}</span></div>`).join('');
+</script>
+</body>
+</html>

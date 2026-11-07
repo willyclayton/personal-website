@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Mockups: About</title>
+<style>
+/* ---------- Mockup frame (shared) ---------- */
+@font-face { font-family: "Geist"; src: url(fonts/geist.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Geist Mono"; src: url(fonts/geist-mono.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Big Shoulders Display"; src: url(fonts/big-shoulders-display-800.woff2) format("woff2"); font-weight: 800; font-display: swap; }
+@font-face { font-family: "Instrument Serif"; src: url(fonts/instrument-serif-400.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Instrument Serif"; src: url(fonts/instrument-serif-400-italic.woff2) format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+:root { --sans: "Geist", system-ui, sans-serif; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --display: "Big Shoulders Display", "Arial Narrow", sans-serif; --serif: "Instrument Serif", Georgia, serif; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #e8e8eb; color: #111; font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+h2, h3, h4, p, ul, ol, dl, dd, blockquote, figure { margin: 0; }
+.mk-bar { position: sticky; top: 0; z-index: 50; display: flex; flex-wrap: wrap; align-items: center; gap: 0 1.25rem; padding: .25rem 1rem; background: #111; color: #fff; font: 500 .8125rem/1.4 var(--mono); }
+.mk-bar a { display: inline-block; padding: .65rem 0; color: #fff; opacity: .6; text-decoration: none; }
+.mk-bar a[aria-current="page"] { opacity: 1; text-decoration: underline; text-underline-offset: .35em; }
+.mk-bar .jump { display: flex; gap: 1rem; margin-left: auto; }
+.mk { padding: 2.5rem clamp(.75rem, 3vw, 2rem) 0; scroll-margin-top: 3rem; }
+.mk-label { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .75rem; max-width: 72rem; margin: 0 auto .75rem; font: 400 .875rem/1.5 var(--mono); color: #444; }
+.mk-label b { color: #111; font-weight: 600; }
+.mk-frame { max-width: 72rem; margin: 0 auto; overflow: hidden; border-radius: 10px; background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 12px 32px rgba(0,0,0,.08); }
+.mk-end { height: 5rem; }
+.pad { padding: clamp(1.5rem, 5vw, 3.5rem); }
+.title { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 600; letter-spacing: -.03em; }
+.lnk { text-decoration-color: #b3ddf2; text-decoration-thickness: .16em; text-underline-offset: .2em; }
+.muted { color: #5f6368; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* ---------- About 1: a letter ---------- */
+.a1 { background: #fbfaf7; }
+.a1 .in { max-width: 38rem; margin: 0 auto; }
+.a1 p { font: 400 clamp(1.25rem, 2.4vw, 1.5rem)/1.45 var(--serif); }
+.a1 p + p { margin-top: 1rem; }
+.a1 .sig { margin-top: 1.5rem; font-style: italic; }
+.a1 h3 { margin: 2.5rem 0 .5rem; font: 400 .8125rem/1 var(--mono); color: #6b6b6b; }
+.a1 ul { padding: 0; list-style: none; }
+.a1 li { padding: .6rem 0; border-bottom: 1px solid #e9e6df; font-size: 1rem; line-height: 1.5; }
+.a1 li span { display: block; font: 400 .8125rem/1.4 var(--mono); color: #6b6b6b; }
+
+/* ---------- About 2: testimonial wall ---------- */
+.a2 .top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; align-items: end; }
+.a2 .top p { line-height: 1.55; }
+.a2 .wall { columns: 3 16rem; column-gap: 1rem; margin-top: 2rem; }
+.a2 figure { break-inside: avoid; margin: 0 0 1rem; padding: 1.25rem; border-radius: 10px; background: #f4f4f5; }
+.a2 figure:nth-child(3n+1) { background: #fff4d6; }
+.a2 figure:nth-child(3n+2) { background: #e3f1f8; }
+.a2 blockquote { line-height: 1.45; }
+.a2 figure.big blockquote { font: 400 1.5rem/1.2 var(--serif); }
+.a2 figcaption { margin-top: .6rem; font: 400 .8125rem/1.4 var(--mono); color: #5f6368; }
+.a2 .fine { margin-top: .5rem; font-size: .875rem; color: #5f6368; }
+@media (max-width: 44rem) { .a2 .top { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- About 3: questions ---------- */
+.a3 dl { max-width: 46rem; margin-top: 1.5rem; border-top: 1px solid #e6e6e9; }
+.a3 dl div { display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: 1.5rem; padding: 1.1rem 0; border-bottom: 1px solid #e6e6e9; }
+.a3 dt { font: 400 .9375rem/1.5 var(--mono); color: #5f6368; }
+.a3 dd { line-height: 1.55; }
+.a3 dd q { font-style: italic; }
+@media (max-width: 40rem) { .a3 dl div { grid-template-columns: minmax(0, 1fr); gap: .25rem; } }
+
+/* ---------- About 4: one big quote ---------- */
+.a4 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 3rem; background: #111; color: #eee; }
+.a4 .bio p { margin-top: 1rem; line-height: 1.6; color: #cfcfcf; }
+.a4 .bio .title { color: #fff; }
+.a4 .bio a { color: #fff; text-decoration-color: #3f7fa3; }
+.a4 .stage { display: flex; flex-direction: column; justify-content: space-between; min-height: 20rem; }
+.a4 .k { font: 400 .8125rem/1 var(--mono); color: #9a9a9a; }
+.a4 blockquote { margin-top: 1.25rem; font: 400 italic clamp(1.75rem, 3.6vw, 2.75rem)/1.15 var(--serif); color: #fff; animation: a4in .4s ease both; }
+.a4 .who { margin-top: 1rem; font: 400 .9375rem/1 var(--mono); color: #f2c94c; }
+@keyframes a4in { from { opacity: 0; transform: translateY(8px); } }
+.a4 .ctl { display: flex; align-items: center; gap: .75rem; margin-top: 2rem; }
+.a4 .ctl button { width: 44px; height: 44px; border: 1px solid #444; border-radius: 50%; background: none; color: #fff; font: 400 1.1rem/1 var(--mono); cursor: pointer; }
+.a4 .ctl button:hover { border-color: #fff; }
+.a4 .dots { display: flex; gap: .4rem; margin-left: .5rem; }
+.a4 .dots i { width: 6px; height: 6px; border-radius: 50%; background: #444; }
+.a4 .dots i.on { background: #fff; }
+.a4 .fine { margin-top: 1rem; font-size: .8125rem; color: #8a8a8a; }
+@media (max-width: 44rem) { .a4 { grid-template-columns: minmax(0, 1fr); gap: 2rem; } .a4 .stage { min-height: 18rem; } }
+
+/* ---------- About 5: profile card that flips ---------- */
+.a5 { display: grid; place-items: center; padding: clamp(2rem, 6vw, 4rem) 1rem; background: #eef1f4; }
+.a5 .scene { width: min(100%, 26rem); perspective: 1200px; }
+.a5 .card { position: relative; height: 31rem; transform-style: preserve-3d; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+.a5 .card.flipped { transform: rotateY(180deg); }
+.a5 .face { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 1.75rem; border-radius: 16px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 18px 40px rgba(20,30,40,.12); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.a5 .back { transform: rotateY(180deg); background: #111; color: #fff; justify-content: center; }
+.a5 .name { font: 800 3.5rem/.85 var(--display); text-transform: uppercase; }
+.a5 .role { margin-top: .75rem; font-size: 1rem; }
+.a5 .facts { margin-top: 1.25rem; border-top: 1px solid #e6e6e9; }
+.a5 .facts div { display: flex; justify-content: space-between; gap: 1rem; padding: .55rem 0; border-bottom: 1px solid #e6e6e9; font-size: .9375rem; }
+.a5 .facts dt { font: 400 .8125rem/1.6 var(--mono); color: #5f6368; }
+.a5 .facts dd { text-align: right; }
+.a5 .links { display: flex; gap: 1.25rem; margin-top: auto; font: 400 .875rem/1 var(--mono); }
+.a5 .links a { padding: .5rem 0; }
+.a5 .flip { align-self: flex-start; min-height: 44px; margin-top: .75rem; padding: 0 1rem; border: 1px solid #111; border-radius: 999px; background: #fff; color: #111; font: 500 .8125rem/1 var(--mono); cursor: pointer; }
+.a5 .back .flip { border-color: #fff; background: #111; color: #fff; }
+.a5 .back blockquote { font: 400 italic 1.75rem/1.2 var(--serif); }
+.a5 .back .who { margin-top: 1rem; font: 400 .875rem/1 var(--mono); color: #f2c94c; }
+.a5 .back .fine { margin-top: 2rem; font-size: .8125rem; color: #9a9a9a; }
+</style>
+</head>
+<body>
+<nav class="mk-bar" aria-label="Mockups">
+  <a href="index.html">mockups</a>
+  <a href="home.html">home</a>
+  <a href="work.html">work</a>
+  <a href="projects.html">projects</a>
+  <a href="about.html" aria-current="page">about</a>
+  <span class="jump"><a href="#v1">1</a><a href="#v2">2</a><a href="#v3">3</a><a href="#v4">4</a><a href="#v5">5</a></span>
+</nav>
+
+<section class="mk" id="v1">
+  <div class="mk-label"><b>About 1 · A letter</b> Your own intro set large in serif, like a note. Interests and contact as a short list underneath.</div>
+  <div class="mk-frame"><div class="pad a1"><div class="in">
+    <h2 class="title" style="margin-bottom:1.5rem">About</h2>
+    <p>I love to learn and tinker with new things, which is why I built this site. It's a place to share my thoughts, show off my work, and (most importantly) be able to tell people "yeah, I've got a website."</p>
+    <p class="sig">Will</p>
+    <h3>details</h3>
+    <ul>
+      <li><span>based in</span>Chicago</li>
+      <li><span>outside of work</span>Golf, the Braves, Georgia Tech sports, skiing, photography, woodworking, electronics and 3D printing</li>
+      <li><span>say hi</span><a class="lnk" href="https://www.linkedin.com/in/willuclayton">LinkedIn</a> · <a class="lnk" href="https://github.com/willyclayton">GitHub</a> · <a class="lnk" href="https://photos.willyclayton.com">photos</a></li>
+      <li><span>what people say</span><q>Will has skills. Multiple, even.</q> (A Reference Who Was Not Prepped)</li>
+    </ul>
+  </div></div></div>
+</section>
+
+<section class="mk" id="v2">
+  <div class="mk-label"><b>About 2 · Testimonial wall</b> All nine testimonials at once, as the main event, with a short bio on top.</div>
+  <div class="mk-frame"><div class="pad a2">
+    <div class="top"><h2 class="title">Real testimonials from real people</h2><p>I love to learn and tinker with new things. Solutions engineer at Omni Analytics in Chicago. Here's what people say.</p></div>
+    <div class="wall" id="a2"></div>
+    <p class="fine">All testimonials are 100% real and were definitely not written by the site owner.</p>
+  </div></div>
+</section>
+
+<section class="mk" id="v3">
+  <div class="mk-label"><b>About 3 · Questions</b> The About page as quick questions and answers. Easy to scan; every answer is a fact from your Notion page.</div>
+  <div class="mk-frame"><div class="pad a3">
+    <h2 class="title">About</h2>
+    <dl>
+      <div><dt>Where are you based?</dt><dd>Chicago.</dd></div>
+      <div><dt>What do you do?</dt><dd>Solutions engineer at <a class="lnk" href="https://omni.co/">Omni Analytics</a>, an AI analytics platform.</dd></div>
+      <div><dt>And before that?</dt><dd>Six years as a data consultant at Accenture, working with telecom, healthcare and aerospace clients.</dd></div>
+      <div><dt>Where did you go to school?</dt><dd>Georgia Tech, twice: an MS in Analytics (finished while working full time) and a BS in Mechanical Engineering.</dd></div>
+      <div><dt>What do you build?</dt><dd>Side projects, mostly sports apps and AI experiments. The biggest is <a class="lnk" href="https://the-bracket-lab.vercel.app/">The Bracket Lab</a>.</dd></div>
+      <div><dt>Outside of work?</dt><dd>Golf, the Braves, Georgia Tech sports, skiing, photography, woodworking, electronics and 3D printing.</dd></div>
+      <div><dt>Why a website?</dt><dd>To share my thoughts, show off my work, and (most importantly) be able to tell people "yeah, I've got a website."</dd></div>
+      <div><dt>Any references?</dt><dd><q>Will Clayton is, without question, one of the data consultants of all time.</q> (A Very Real Person)</dd></div>
+      <div><dt>How do I reach you?</dt><dd>Message me on <a class="lnk" href="https://www.linkedin.com/in/willuclayton">LinkedIn</a>.</dd></div>
+    </dl>
+  </div></div>
+</section>
+
+<section class="mk" id="v4">
+  <div class="mk-label"><b>About 4 · One big quote</b> Short bio on the left; one testimonial at a time on the right, with arrows (and arrow keys).</div>
+  <div class="mk-frame"><div class="pad a4">
+    <div class="bio">
+      <h2 class="title">About</h2>
+      <p>I love to learn and tinker with new things, which is why I built this site.</p>
+      <p>Solutions engineer at Omni Analytics in Chicago. Six years at Accenture before that. Georgia Tech, twice.</p>
+      <p><a class="lnk" href="https://www.linkedin.com/in/willuclayton">LinkedIn</a> · <a class="lnk" href="https://github.com/willyclayton">GitHub</a> · <a class="lnk" href="https://photos.willyclayton.com">Photos</a></p>
+    </div>
+    <div class="stage" id="a4" tabindex="0" aria-label="Testimonials. Use the arrow buttons or arrow keys.">
+      <div><p class="k">real testimonials from real people</p><div id="a4q" aria-live="polite"></div></div>
+      <div><div class="ctl"><button type="button" id="a4prev" aria-label="Previous testimonial">←</button><button type="button" id="a4next" aria-label="Next testimonial">→</button><span class="dots" id="a4dots" aria-hidden="true"></span></div><p class="fine">All testimonials are 100% real and were definitely not written by the site owner.</p></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="mk" id="v5">
+  <div class="mk-label"><b>About 5 · Profile card</b> A card with the key facts. "Flip it" turns it over to show a random testimonial.</div>
+  <div class="mk-frame"><div class="a5">
+    <div class="scene"><div class="card" id="a5">
+      <div class="face front">
+        <p class="name">Will<br>Clayton</p>
+        <p class="role">Solutions engineer at Omni Analytics</p>
+        <dl class="facts">
+          <div><dt>based in</dt><dd>Chicago</dd></div>
+          <div><dt>before</dt><dd>Accenture, 2020–2026</dd></div>
+          <div><dt>school</dt><dd>Georgia Tech, MS + BS</dd></div>
+          <div><dt>off the clock</dt><dd>Golf, Braves, skiing</dd></div>
+        </dl>
+        <button class="flip" type="button" aria-controls="a5">flip it</button>
+        <div class="links"><a class="lnk" href="https://www.linkedin.com/in/willuclayton">LinkedIn</a><a class="lnk" href="https://github.com/willyclayton">GitHub</a><a class="lnk" href="https://photos.willyclayton.com">Photos</a></div>
+      </div>
+      <div class="face back" aria-hidden="true">
+        <blockquote id="a5q"></blockquote>
+        <p class="who" id="a5w"></p>
+        <button class="flip" type="button" tabindex="-1">flip back</button>
+        <p class="fine">All testimonials are 100% real and were definitely not written by the site owner.</p>
+      </div>
+    </div></div>
+  </div></div>
+</section>
+
+<div class="mk-end"></div>
+
+<script>
+const Q = [
+  ['I asked him to build me a dashboard and he came back with a full AI-powered bracket prediction platform. I just needed a bar chart.', 'Unnamed Stakeholder'],
+  ["I don't know what he does but he's very convincing about it.", 'His Dad'],
+  ['Will has skills. Multiple, even.', 'A Reference Who Was Not Prepped'],
+  ['Invited him on a camping trip. He brought a portable monitor.', 'A College Buddy'],
+  ['Will Clayton is, without question, one of the data consultants of all time.', 'A Very Real Person'],
+  ["Survived Georgia Tech's analytics program while working full time. Still can't parallel park.", 'His Wife'],
+  ["Built a spreadsheet ranking every Ikon Pass mountain by 'value per vertical foot.' Still goes to the same three.", 'A Travel Companion'],
+  ["He knows the Braves' entire 40-man roster but not his neighbor's name.", 'His Apartment Building'],
+  ["Spent 40 minutes on the practice green and called it 'calibration.'", 'The Group Behind Him'],
+];
+const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
+// 2: wall
+document.getElementById('a2').innerHTML = Q.map(([t, w], i) => `<figure class="${i === 0 || i === 4 ? 'big' : ''}"><blockquote>"${esc(t)}"</blockquote><figcaption>${esc(w)}</figcaption></figure>`).join('');
+
+// 4: one at a time
+let i4 = 0;
+const dots = document.getElementById('a4dots');
+dots.innerHTML = Q.map(() => '<i></i>').join('');
+function r4() {
+  document.getElementById('a4q').innerHTML = `<blockquote>"${esc(Q[i4][0])}"</blockquote><p class="who">${esc(Q[i4][1])}</p>`;
+  [...dots.children].forEach((d, n) => d.classList.toggle('on', n === i4));
+}
+const step = (d) => { i4 = (i4 + d + Q.length) % Q.length; r4(); };
+document.getElementById('a4prev').onclick = () => step(-1);
+document.getElementById('a4next').onclick = () => step(1);
+document.getElementById('a4').addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') step(1); if (e.key === 'ArrowLeft') step(-1); });
+r4();
+
+// 5: flip card
+const card = document.getElementById('a5');
+const front = card.querySelector('.front'), back = card.querySelector('.back');
+let i5 = -1;
+card.querySelectorAll('.flip').forEach((b) => b.addEventListener('click', () => {
+  const flipping = !card.classList.contains('flipped');
+  if (flipping) {
+    i5 = (i5 + 1 + Math.floor(Math.random() * (Q.length - 1))) % Q.length;
+    document.getElementById('a5q').textContent = '"' + Q[i5][0] + '"';
+    document.getElementById('a5w').textContent = Q[i5][1];
+  }
+  card.classList.toggle('flipped', flipping);
+  front.setAttribute('aria-hidden', String(flipping));
+  back.setAttribute('aria-hidden', String(!flipping));
+  front.querySelector('.flip').tabIndex = flipping ? -1 : 0;
+  back.querySelector('.flip').tabIndex = flipping ? 0 : -1;
+  (flipping ? back : front).querySelector('.flip').focus({ preventScroll: true });
+}));
+</script>
+</body>
+</html>

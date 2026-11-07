@@ -32,6 +32,10 @@ To preview locally, run `python3 -m http.server` in this folder and open http://
 - **Ctrl+F** still finds text in closed tabs (in browsers that support `hidden="until-found"`) and opens the right tab.
 - **Theme** follows the device setting, and the toggle remembers the visitor's choice.
 
+## Mockups
+
+`mockups/` has five design variations for each tab (Home, Work, Projects, About), all using the real content. Open `mockups/index.html` in a browser, or visit `/mockups/` once deployed. The folder isn't linked from the site and is blocked in `robots.txt`.
+
 ## Hosting
 
 Static files only. On Vercel: import the repo, framework preset "Other", no build command, output directory is the repo root. GitHub Pages also works from the repo root.

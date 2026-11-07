@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Mockups: Projects</title>
+<style>
+/* ---------- Mockup frame (shared) ---------- */
+@font-face { font-family: "Geist"; src: url(fonts/geist.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Geist Mono"; src: url(fonts/geist-mono.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Big Shoulders Display"; src: url(fonts/big-shoulders-display-800.woff2) format("woff2"); font-weight: 800; font-display: swap; }
+@font-face { font-family: "Instrument Serif"; src: url(fonts/instrument-serif-400.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Instrument Serif"; src: url(fonts/instrument-serif-400-italic.woff2) format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+:root { --sans: "Geist", system-ui, sans-serif; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --display: "Big Shoulders Display", "Arial Narrow", sans-serif; --serif: "Instrument Serif", Georgia, serif; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #e8e8eb; color: #111; font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+h2, h3, h4, p, ul, ol { margin: 0; }
+.mk-bar { position: sticky; top: 0; z-index: 50; display: flex; flex-wrap: wrap; align-items: center; gap: 0 1.25rem; padding: .25rem 1rem; background: #111; color: #fff; font: 500 .8125rem/1.4 var(--mono); }
+.mk-bar a { display: inline-block; padding: .65rem 0; color: #fff; opacity: .6; text-decoration: none; }
+.mk-bar a[aria-current="page"] { opacity: 1; text-decoration: underline; text-underline-offset: .35em; }
+.mk-bar .jump { display: flex; gap: 1rem; margin-left: auto; }
+.mk { padding: 2.5rem clamp(.75rem, 3vw, 2rem) 0; scroll-margin-top: 3rem; }
+.mk-label { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .75rem; max-width: 72rem; margin: 0 auto .75rem; font: 400 .875rem/1.5 var(--mono); color: #444; }
+.mk-label b { color: #111; font-weight: 600; }
+.mk-frame { max-width: 72rem; margin: 0 auto; overflow: hidden; border-radius: 10px; background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 12px 32px rgba(0,0,0,.08); }
+.mk-end { height: 5rem; }
+.pad { padding: clamp(1.5rem, 5vw, 3.5rem); }
+.title { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 600; letter-spacing: -.03em; }
+.muted { color: #5f6368; }
+.lnk { text-decoration-color: #b3ddf2; text-decoration-thickness: .16em; text-underline-offset: .2em; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* ---------- Projects 1: index table ---------- */
+.p1 table { width: 100%; margin-top: 1.5rem; border-collapse: collapse; font-size: .9375rem; }
+.p1 th { padding: .5rem 1rem .5rem 0; border-bottom: 2px solid #111; font: 500 .75rem/1 var(--mono); text-align: left; color: #5f6368; }
+.p1 td { padding: .8rem 1rem .8rem 0; border-bottom: 1px solid #e6e6e9; vertical-align: top; line-height: 1.45; }
+.p1 td:first-child { font-weight: 600; white-space: nowrap; }
+.p1 td.s, .p1 td.l { font: 400 .8125rem/1.6 var(--mono); color: #5f6368; }
+.p1 td.l a { color: #111; display: inline-block; margin-right: .6rem; }
+.p1 tr:hover td { background: #fafafa; }
+@media (max-width: 44rem) {
+  .p1 thead { display: none; }
+  .p1 tr { display: grid; grid-template-columns: minmax(0, 1fr); padding: .9rem 0; border-bottom: 1px solid #e6e6e9; }
+  .p1 td { padding: .1rem 0; border: 0; white-space: normal !important; }
+}
+
+/* ---------- Projects 2: cards with type covers ---------- */
+.p2 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+.p2 article { display: flex; flex-direction: column; border: 1px solid #e6e6e9; border-radius: 10px; overflow: hidden; transition: transform .2s, box-shadow .2s; }
+.p2 article:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.08); }
+.p2 .cover { display: flex; align-items: flex-end; height: 8.5rem; padding: .9rem 1rem; color: #fff; font: 800 2.25rem/.9 var(--display); text-transform: uppercase; letter-spacing: .01em; text-decoration: none; }
+.p2 .cover.sports { background: #1d3557; }
+.p2 .cover.ai { background: #3d2c5e; }
+.p2 .cover.maps { background: #1f5f80; }
+.p2 .cover.chicago { background: #b3203a; }
+.p2 .body { display: flex; flex-direction: column; gap: .5rem; flex: 1; padding: 1rem; }
+.p2 .body p { line-height: 1.5; font-size: .9375rem; }
+.p2 .foot { display: flex; justify-content: space-between; margin-top: auto; padding-top: .5rem; font: 400 .8125rem/1 var(--mono); }
+.p2 .foot a { padding: .4rem 0; }
+
+/* ---------- Projects 3: featured + compact ---------- */
+.p3 .feat { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 2rem; margin-top: 1.5rem; padding: clamp(1.25rem, 4vw, 2.25rem); border-radius: 10px; background: #111; color: #f2f2f2; }
+.p3 .feat .k { font: 400 .8125rem/1 var(--mono); color: #f2c94c; }
+.p3 .feat h3 { margin-top: .6rem; font: 800 clamp(2.5rem, 7vw, 4rem)/.9 var(--display); text-transform: uppercase; }
+.p3 .feat p { margin-top: .9rem; line-height: 1.55; color: #d6d6d6; }
+.p3 .feat .links { display: flex; gap: 1.25rem; margin-top: 1.25rem; font: 400 .875rem/1 var(--mono); }
+.p3 .feat .links a { padding: .5rem 0; color: #fff; text-decoration-color: #f2c94c; }
+.p3 .feat h4 { font: 400 .8125rem/1 var(--mono); color: #9a9a9a; }
+.p3 .feat ul { margin-top: .75rem; padding-left: 1.1rem; line-height: 1.5; font-size: .9375rem; color: #e6e6e6; }
+.p3 .feat li { margin-top: .4rem; }
+.p3 .rest { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); gap: 0 2.5rem; margin-top: 2rem; }
+.p3 .rest div { padding: .85rem 0; border-bottom: 1px solid #e6e6e9; }
+.p3 .rest a { font-weight: 600; }
+.p3 .rest p { margin-top: .2rem; font-size: .9375rem; line-height: 1.45; color: #444; }
+@media (max-width: 44rem) { .p3 .feat { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Projects 4: big list + preview ---------- */
+.p4 .wrap { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 2.5rem; margin-top: 1.5rem; }
+.p4 ol { padding: 0; list-style: none; }
+.p4 li button { display: flex; align-items: baseline; gap: .75rem; width: 100%; padding: .2rem 0; border: 0; background: none; color: #b5b5b5; font: 400 clamp(1.75rem, 4vw, 2.75rem)/1.15 var(--serif); text-align: left; cursor: pointer; transition: color .15s, transform .2s; }
+.p4 li button span { font: 400 .75rem/1 var(--mono); color: #9a9a9a; }
+.p4 li button:hover, .p4 li button[aria-expanded="true"] { color: #111; transform: translateX(4px); }
+.p4 .panel { position: sticky; top: 4rem; align-self: start; padding: 1.5rem; border-radius: 10px; background: #f5f3ee; min-height: 16rem; }
+.p4 .panel h3 { font: 400 2rem/1.1 var(--serif); }
+.p4 .panel p { margin-top: .75rem; line-height: 1.55; }
+.p4 .panel .s { margin-top: 1rem; font: 400 .8125rem/1.6 var(--mono); color: #5f6368; }
+.p4 .panel .links { display: flex; gap: 1.25rem; margin-top: .75rem; font: 400 .875rem/1 var(--mono); }
+.p4 .panel .links a { padding: .5rem 0; }
+.p4 .inline { display: none; }
+@media (max-width: 44rem) {
+  .p4 .wrap { grid-template-columns: minmax(0, 1fr); }
+  .p4 .panel { display: none; }
+  .p4 .inline { display: block; padding: .25rem 0 1rem; line-height: 1.5; }
+  .p4 .inline[hidden] { display: none; }
+}
+
+/* ---------- Projects 5: grouped by theme ---------- */
+.p5 .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12.5rem), 1fr)); gap: 2rem; margin-top: 1.75rem; }
+.p5 h3 { display: flex; justify-content: space-between; padding-bottom: .5rem; border-bottom: 3px solid currentColor; font: 800 1.75rem/1 var(--display); text-transform: uppercase; }
+.p5 h3 span { font: 400 .8125rem/1.6 var(--mono); }
+.p5 .g.sports h3 { color: #1d3557; } .p5 .g.ai h3 { color: #3d2c5e; } .p5 .g.maps h3 { color: #1f5f80; } .p5 .g.chicago h3 { color: #b3203a; }
+.p5 .g div { padding: .8rem 0; border-bottom: 1px solid #e6e6e9; }
+.p5 .g a { font-weight: 600; }
+.p5 .g p { margin-top: .2rem; font-size: .9375rem; line-height: 1.45; color: #444; }
+</style>
+</head>
+<body>
+<nav class="mk-bar" aria-label="Mockups">
+  <a href="index.html">mockups</a>
+  <a href="home.html">home</a>
+  <a href="work.html">work</a>
+  <a href="projects.html" aria-current="page">projects</a>
+  <a href="about.html">about</a>
+  <span class="jump"><a href="#v1">1</a><a href="#v2">2</a><a href="#v3">3</a><a href="#v4">4</a><a href="#v5">5</a></span>
+</nav>
+
+<section class="mk" id="v1">
+  <div class="mk-label"><b>Projects 1 · Index table</b> All 13 in a dense table. Fast to scan on desktop; rows stack on a phone.</div>
+  <div class="mk-frame"><div class="pad p1"><h2 class="title">Projects</h2><table id="p1"><thead><tr><th>project</th><th>what it is</th><th>stack</th><th>links</th></tr></thead><tbody></tbody></table></div></div>
+</section>
+
+<section class="mk" id="v2">
+  <div class="mk-label"><b>Projects 2 · Cards with type covers</b> No screenshots needed: each card's cover is the name, colored by theme (sports, AI, maps, Chicago).</div>
+  <div class="mk-frame"><div class="pad p2"><h2 class="title">Projects</h2><div class="grid" id="p2"></div></div></div>
+</section>
+
+<section class="mk" id="v3">
+  <div class="mk-label"><b>Projects 3 · Featured + compact</b> The Bracket Lab gets the spotlight with your own "learned" notes; the rest are one line each.</div>
+  <div class="mk-frame"><div class="pad p3"><h2 class="title">Projects</h2>
+    <div class="feat">
+      <div>
+        <p class="k">biggest side project</p>
+        <h3>The Bracket Lab</h3>
+        <p>Eight AI models pick the March Madness bracket, each with a different strategy, and get scored live against real results. Several people used it to fill out their brackets, and some won their pools.</p>
+        <div class="links"><a href="https://the-bracket-lab.vercel.app/">open the app</a><a href="https://github.com/willyclayton/the-bracket-lab">code</a></div>
+      </div>
+      <div>
+        <h4>what I learned</h4>
+        <ul>
+          <li>How to use Stripe integrations</li>
+          <li>Heavy, heavy research before jumping into anything</li>
+          <li>Live scoring, pipelines, Redis</li>
+          <li>Fixing bugs on the fly once it went live</li>
+          <li>March Madness is awesome because it's unpredictable</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rest" id="p3"></div>
+  </div></div>
+</section>
+
+<section class="mk" id="v4">
+  <div class="mk-label"><b>Projects 4 · Big list + preview</b> Names in large serif type. Hover or tap one and its details appear beside it (below it on a phone).</div>
+  <div class="mk-frame"><div class="pad p4"><h2 class="title">Projects</h2>
+    <div class="wrap"><ol id="p4"></ol><div class="panel" id="p4panel" aria-live="polite"></div></div>
+  </div></div>
+</section>
+
+<section class="mk" id="v5">
+  <div class="mk-label"><b>Projects 5 · Grouped by theme</b> Four columns: sports, AI, flights and maps, Chicago. Shows what you gravitate to at a glance.</div>
+  <div class="mk-frame"><div class="pad p5"><h2 class="title">Projects</h2><div class="cols" id="p5"></div></div></div>
+</section>
+
+<div class="mk-end"></div>
+
+<script>
+const P = [
+  { name: 'The Bracket Lab', group: 'sports', url: 'https://the-bracket-lab.vercel.app/', code: 'https://github.com/willyclayton/the-bracket-lab', stack: 'Next.js, Claude, Stripe', what: 'Eight AI models pick the March Madness bracket and get scored live against real results.' },
+  { name: 'Masters 2026', group: 'sports', url: 'https://green-jacket-lab.vercel.app/', code: 'https://github.com/willyclayton/masters-2026', stack: 'Next.js', what: 'Three AI models and live betting odds for the 2026 Masters, with a bet tracker.' },
+  { name: 'Movie Recommender', group: 'ai', url: 'https://movie-picker-seven-gilt.vercel.app', code: 'https://github.com/willyclayton/movie-picker', stack: 'Next.js, TMDB', what: "Picks a movie based on your mood, using Russell's circumplex model of emotion." },
+  { name: 'Chicago Time Map', group: 'chicago', url: 'https://github.com/willyclayton/chicago-history', stack: 'TypeScript', what: 'Chicago history on a map, from 1780 to today.' },
+  { name: 'All My Flights', group: 'maps', url: 'https://all-my-flights.vercel.app/', code: 'https://github.com/willyclayton/all-my-flights', stack: 'Next.js', what: 'A personal flight log with stats and a map of every route flown.' },
+  { name: 'Flight Aware', group: 'maps', url: 'https://github.com/willyclayton/flight-aware', stack: 'TypeScript', what: 'A live flight tracker that costs nothing to run.' },
+  { name: 'Carrier Tracker', group: 'maps', url: 'https://navy-ship-tracker.vercel.app', code: 'https://github.com/willyclayton/navy-ship-tracker', stack: 'TypeScript', what: 'Where the USS George Washington is right now.' },
+  { name: 'Georgia Swarm Fan App', group: 'sports', url: 'https://georgia-swarm.vercel.app/', code: 'https://github.com/willyclayton/georgia-swarm', stack: 'Next.js, GitHub Actions', what: 'Scores, standings, roster and highlights for an NLL lacrosse team.' },
+  { name: 'Georgia Tech Football 2026', group: 'sports', url: 'https://gt-football.vercel.app', code: 'https://github.com/willyclayton/georgia-tech-football-2026', stack: 'Expo, TypeScript', what: 'Schedule, depth chart, playbook and scores for the 2026 season.' },
+  { name: 'Personal Dashboard', group: 'chicago', url: 'https://effortless-parfait-18ceea.netlify.app/', stack: 'HTML', what: 'CTA arrivals, weather, scores, news and stocks on a wall-mounted tablet.' },
+  { name: 'Chicago Train Tracker', group: 'chicago', url: 'https://claude-test-production.up.railway.app/', code: 'https://github.com/willyclayton/claude-test', stack: 'Python, Flask, CTA API', what: 'Upcoming southbound trains at Diversey, and which ones you can still catch.' },
+  { name: 'Stock Trader Assistant', group: 'ai', url: 'https://matt-trading.onrender.com/', stack: 'Python', what: 'Tracks a set of trading rules to help decide when to execute a trade.' },
+  { name: 'Sports Tracker', group: 'sports', url: 'https://sports-tracker-bd1d0.web.app/', stack: 'School project', what: 'How often your team wins at the games you attend.' },
+];
+const GROUPS = { sports: 'Sports', ai: 'AI', maps: 'Flights and maps', chicago: 'Chicago' };
+const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const links = (p) => `<a class="lnk" href="${p.url}">${p.code || !p.url.includes('github.com') ? 'open' : 'code'}</a>${p.code ? `<a class="lnk" href="${p.code}">code</a>` : ''}`;
+
+// 1: table
+document.querySelector('#p1 tbody').innerHTML = P.map((p) => `<tr><td>${esc(p.name)}</td><td>${esc(p.what)}</td><td class="s">${esc(p.stack)}</td><td class="l">${links(p)}</td></tr>`).join('');
+
+// 2: cards
+document.getElementById('p2').innerHTML = P.map((p) => `<article><a class="cover ${p.group}" href="${p.url}">${esc(p.name)}</a><div class="body"><p>${esc(p.what)}</p><div class="foot"><span class="muted">${esc(p.stack)}</span>${p.code ? `<a class="lnk" href="${p.code}">code</a>` : ''}</div></div></article>`).join('');
+
+// 3: compact rest
+document.getElementById('p3').innerHTML = P.slice(1).map((p) => `<div><a class="lnk" href="${p.url}">${esc(p.name)}</a><p>${esc(p.what)}</p></div>`).join('');
+
+// 4: big list + preview
+const panel = document.getElementById('p4panel');
+document.getElementById('p4').innerHTML = P.map((p, i) => `<li><button type="button" aria-expanded="false" data-i="${i}">${esc(p.name)}<span>${String(i + 1).padStart(2, '0')}</span></button><div class="inline" hidden></div></li>`).join('');
+const card = (p) => `<h3>${esc(p.name)}</h3><p>${esc(p.what)}</p><p class="s">${esc(p.stack)} · ${GROUPS[p.group].toLowerCase()}</p><div class="links">${links(p)}</div>`;
+function show4(i, toggleInline) {
+  document.querySelectorAll('#p4 button').forEach((b) => {
+    const on = b.dataset.i == i;
+    const inline = b.nextElementSibling;
+    if (toggleInline && on) { const open = b.getAttribute('aria-expanded') === 'true' && !inline.hidden; inline.hidden = open; inline.innerHTML = card(P[i]); }
+    else if (toggleInline) inline.hidden = true;
+    b.setAttribute('aria-expanded', String(on));
+  });
+  panel.innerHTML = card(P[i]);
+}
+const wide = matchMedia('(min-width: 44.01rem)');
+document.querySelectorAll('#p4 button').forEach((b) => {
+  b.addEventListener('mouseenter', () => { if (wide.matches) show4(b.dataset.i); });
+  b.addEventListener('focus', () => { if (wide.matches) show4(b.dataset.i); });
+  b.addEventListener('click', () => show4(b.dataset.i, !wide.matches));
+});
+show4(0);
+
+// 5: grouped
+document.getElementById('p5').innerHTML = Object.keys(GROUPS).map((g) => {
+  const items = P.filter((p) => p.group === g);
+  return `<div class="g ${g}"><h3>${GROUPS[g]}<span>${items.length}</span></h3>${items.map((p) => `<div><a class="lnk" href="${p.url}">${esc(p.name)}</a><p>${esc(p.what)}</p></div>`).join('')}</div>`;
+}).join('');
+</script>
+</body>
+</html>

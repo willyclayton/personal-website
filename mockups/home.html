@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Mockups: Home</title>
+<style>
+/* ---------- Mockup frame (shared) ---------- */
+@font-face { font-family: "Geist"; src: url(fonts/geist.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Geist Mono"; src: url(fonts/geist-mono.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Big Shoulders Display"; src: url(fonts/big-shoulders-display-800.woff2) format("woff2"); font-weight: 800; font-display: swap; }
+@font-face { font-family: "Instrument Serif"; src: url(fonts/instrument-serif-400.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Instrument Serif"; src: url(fonts/instrument-serif-400-italic.woff2) format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+:root { --sans: "Geist", system-ui, sans-serif; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --display: "Big Shoulders Display", "Arial Narrow", sans-serif; --serif: "Instrument Serif", Georgia, serif; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #e8e8eb; color: #111; font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+.mk-bar { position: sticky; top: 0; z-index: 50; display: flex; flex-wrap: wrap; align-items: center; gap: 0 1.25rem; padding: .25rem 1rem; background: #111; color: #fff; font: 500 .8125rem/1.4 var(--mono); }
+.mk-bar a { display: inline-block; padding: .65rem 0; color: #fff; opacity: .6; text-decoration: none; }
+.mk-bar a[aria-current="page"] { opacity: 1; text-decoration: underline; text-underline-offset: .35em; }
+.mk-bar .jump { display: flex; gap: 1rem; margin-left: auto; }
+.mk { padding: 2.5rem clamp(.75rem, 3vw, 2rem) 0; scroll-margin-top: 3rem; }
+.mk-label { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .75rem; max-width: 72rem; margin: 0 auto .75rem; font: 400 .875rem/1.5 var(--mono); color: #444; }
+.mk-label b { color: #111; font-weight: 600; }
+.mk-label button { margin-left: auto; min-height: 36px; padding: 0 .75rem; border: 1px solid #bbb; border-radius: 6px; background: #fff; font: inherit; cursor: pointer; }
+.mk-frame { position: relative; max-width: 72rem; margin: 0 auto; overflow: hidden; border-radius: 10px; box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 12px 32px rgba(0,0,0,.08); }
+.mk-end { height: 5rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.rest { visibility: hidden; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* ---------- Home 1: centered typewriter ---------- */
+.h1x { min-height: 36rem; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3rem 1.25rem 6rem; background: #fff; font-family: var(--mono); text-align: center; }
+.h1x .line { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 .5em; font-size: clamp(1.5rem, 5vw, 2.5rem); line-height: 1.4; }
+.h1x .static { color: #666; }
+.h1x .typer { min-width: 13ch; text-align: left; white-space: nowrap; }
+.h1x .caret { border-left: .08em solid #111; margin-right: -.08em; animation: h1blink 1s steps(1) infinite; }
+@keyframes h1blink { 50% { border-color: transparent; } }
+.h1x .sub { margin-top: 1rem; color: #666; font-size: .9375rem; }
+.h1x nav { position: absolute; left: 0; right: 0; bottom: 1.75rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 0 1.5rem; font-weight: 600; color: #666; }
+.h1x nav a { padding: .6rem 0; text-decoration: none; }
+.h1x nav a:hover { color: #111; text-decoration: underline; }
+
+/* ---------- Home 2: terminal ---------- */
+.h2x { min-height: 36rem; padding: clamp(1.25rem, 4vw, 2.5rem); background: #0e0e10; color: #d9d9de; font: 400 clamp(.875rem, 1.6vw, 1.0625rem)/1.75 var(--mono); }
+.h2x .win { display: flex; gap: .45rem; margin-bottom: 1.5rem; }
+.h2x .win i { width: .75rem; height: .75rem; border-radius: 50%; background: #3a3a40; }
+.h2x .p { color: #7ee2a8; }
+.h2x .cmd { color: #fff; }
+.h2x .out { color: #a7a7b0; white-space: pre-wrap; margin-bottom: .75rem; }
+.h2x .out b { color: #fff; font-weight: 500; }
+.h2x .caret { display: inline-block; width: .6em; height: 1.1em; vertical-align: -.2em; background: #d9d9de; animation: h2blink 1s steps(1) infinite; }
+@keyframes h2blink { 50% { opacity: 0; } }
+.h2x .cmds { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.h2x .cmds a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 .9rem; border: 1px solid #3a3a40; border-radius: 6px; color: #fff; text-decoration: none; }
+.h2x .cmds a:hover { border-color: #7ee2a8; color: #7ee2a8; }
+.h2x .cmds a::before { content: "$\00a0"; color: #7ee2a8; }
+
+/* ---------- Home 3: big name, Chicago ---------- */
+.h3x { padding: clamp(2rem, 6vw, 4.5rem) clamp(1.25rem, 5vw, 4rem); background: #fff; }
+.h3x h2 { margin: 0 0 0 -.04em; font: 800 clamp(5rem, 22vw, 13rem)/.82 var(--display); letter-spacing: -.01em; text-transform: uppercase; }
+.h3x h2 span { display: block; }
+.h3x .im { margin-top: 1.5rem; font: 400 clamp(1.25rem, 3vw, 1.75rem)/1.3 var(--mono); }
+.h3x .im .caret { border-left: .08em solid #e4002b; margin-right: -.08em; animation: h1blink 1s steps(1) infinite; }
+.h3x .star { display: inline-block; width: .8em; height: .8em; margin-left: .2em; vertical-align: -.05em; fill: #e4002b; }
+.h3x ul { display: flex; flex-wrap: wrap; gap: .5rem 2rem; margin: 2.5rem 0 0; padding: 1.25rem 0 0; border-top: 3px solid #111; list-style: none; font-size: 1rem; }
+.h3x li span { display: block; font: 400 .75rem/1.4 var(--mono); color: #5c6570; }
+.h3x a { text-decoration-color: #b3ddf2; text-decoration-thickness: .2em; text-underline-offset: .2em; }
+
+/* ---------- Home 4: one sentence ---------- */
+.h4x { padding: clamp(2.5rem, 7vw, 5.5rem) clamp(1.25rem, 6vw, 5rem); background: #f7f5f0; color: #1a1a1a; }
+.h4x p { max-width: 46rem; margin: 0; font: 400 clamp(1.75rem, 4.2vw, 3.25rem)/1.18 var(--serif); letter-spacing: -.01em; }
+.h4x p .hi { font-style: italic; color: #6b6b6b; }
+.h4x a { text-decoration-thickness: 1px; text-underline-offset: .12em; }
+.h4x a:hover { text-decoration-thickness: 2px; }
+.h4x .c { visibility: hidden; }
+.h4x .c.on { visibility: visible; }
+.h4x .meta { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0 1.5rem; font: 400 .9375rem/1 var(--mono); }
+.h4x .meta a { display: inline-block; padding: .6rem 0; }
+
+/* ---------- Home 5: departure board ---------- */
+.h5x { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 2rem; align-items: center; padding: clamp(1.5rem, 5vw, 3.5rem); background: #fff; }
+.h5x .hello { font: 400 clamp(1.5rem, 3.4vw, 2.5rem)/1.3 var(--mono); }
+.h5x .hello span { display: block; color: #666; }
+.h5x .hello .caret { border-left: .08em solid #111; margin-right: -.08em; animation: h1blink 1s steps(1) infinite; }
+.h5x .links { display: flex; flex-wrap: wrap; gap: 0 1.25rem; margin-top: 1.5rem; font: 400 .9375rem/1 var(--mono); }
+.h5x .links a { display: inline-block; padding: .6rem 0; }
+.board { padding: 1rem; border-radius: 8px; background: #141414; color: #f4f4f4; font: 500 clamp(.6875rem, 1.25vw, .9375rem)/1 var(--mono); letter-spacing: .04em; }
+.board .head, .board .row { display: grid; grid-template-columns: 6.5em minmax(0, 1.2fr) minmax(0, 1fr); gap: .75em; }
+.board .head { padding: 0 .25rem .6rem; color: #f2c94c; font-size: .8em; }
+.board .row { padding: .55rem .25rem; border-top: 1px solid #262626; }
+.board .cell { display: flex; gap: 1px; flex-wrap: wrap; }
+.board .ch { display: inline-block; width: 1ch; padding: .2em .05em; background: #1f1f1f; border-radius: 2px; text-align: center; box-sizing: content-box; }
+.board .row.now .ch { color: #f2c94c; }
+@media (max-width: 46rem) {
+  .h5x { grid-template-columns: minmax(0, 1fr); }
+  .board .head, .board .row { grid-template-columns: minmax(0, 1fr); gap: .35rem; }
+  .board .head { display: none; }
+}
+</style>
+</head>
+<body>
+<nav class="mk-bar" aria-label="Mockups">
+  <a href="index.html">mockups</a>
+  <a href="home.html" aria-current="page">home</a>
+  <a href="work.html">work</a>
+  <a href="projects.html">projects</a>
+  <a href="about.html">about</a>
+  <span class="jump"><a href="#v1">1</a><a href="#v2">2</a><a href="#v3">3</a><a href="#v4">4</a><a href="#v5">5</a></span>
+</nav>
+
+<!-- HOME 1 -->
+<section class="mk" id="v1">
+  <div class="mk-label"><b>Home 1 · Centered typewriter</b> Closest to your old page: one centered line, links pinned at the bottom.<button type="button" data-replay="1">replay</button></div>
+  <div class="mk-frame">
+    <div class="h1x">
+      <h1 class="line" style="margin:0;font-weight:400">
+        <span class="sr-only">Hello, I'm Will Clayton.</span>
+        <span class="static" aria-hidden="true">hello.... I'm</span>
+        <span class="typer" aria-hidden="true" id="t1"><span class="t">Will.</span><span class="caret"></span><span class="rest"></span></span>
+      </h1>
+      <p class="sub">solutions engineer at omni analytics · chicago</p>
+      <nav aria-label="Sections">
+        <a href="#">work</a><a href="#">projects</a><a href="#">about</a><a href="https://www.linkedin.com/in/willuclayton">linkedin</a><a href="https://github.com/willyclayton">github</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- HOME 2 -->
+<section class="mk" id="v2">
+  <div class="mk-label"><b>Home 2 · Terminal</b> Commands type themselves; the answers are your real résumé lines. Buttons at the end go to each tab.<button type="button" data-replay="2">replay</button></div>
+  <div class="mk-frame">
+    <div class="h2x" id="term">
+      <div class="win" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div id="termOut" aria-live="off"></div>
+      <div class="cmds" id="termCmds" hidden>
+        <a href="#">work</a><a href="#">projects</a><a href="#">about</a><a href="https://www.linkedin.com/in/willuclayton">linkedin</a><a href="https://github.com/willyclayton">github</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOME 3 -->
+<section class="mk" id="v3">
+  <div class="mk-label"><b>Home 3 · Big name, Chicago</b> Your spec's look (Big Shoulders, red star, lake-blue links) with the typewriter on one line underneath.<button type="button" data-replay="3">replay</button></div>
+  <div class="mk-frame">
+    <div class="h3x">
+      <h2><span>Will</span><span>Clayton</span></h2>
+      <p class="im"><span class="sr-only">I'm a solutions engineer.</span><span aria-hidden="true">I'm <span id="t3"><span class="t">a solutions engineer.</span><span class="caret"></span><span class="rest"></span></span></span></p>
+      <ul>
+        <li><span>now</span><a href="#">Omni Analytics</a></li>
+        <li><span>2020–2026</span><a href="#">Accenture</a></li>
+        <li><span>school</span><a href="#">Georgia Tech, MS + BS</a></li>
+        <li><span>based in</span>Chicago<svg class="star" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,0 60,32.68 93.3,25 70,50 93.3,75 60,67.32 50,100 40,67.32 6.7,75 30,50 6.7,25 40,32.68"/></svg></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HOME 4 -->
+<section class="mk" id="v4">
+  <div class="mk-label"><b>Home 4 · One sentence</b> The whole intro types out once as a paragraph, with the key phrases linking to each tab. Serif, warm paper.<button type="button" data-replay="4">replay</button></div>
+  <div class="mk-frame">
+    <div class="h4x">
+      <p id="sentence"><span class="hi">hello.... </span>I'm Will. I'm a solutions engineer at <a href="#">Omni Analytics</a> in Chicago. Before that I spent <a href="#">six years at Accenture</a> as a data consultant. I went to <a href="#">Georgia Tech</a> twice, and I build <a href="#">side projects</a> like The Bracket Lab.</p>
+      <div class="meta"><a href="https://www.linkedin.com/in/willuclayton">LinkedIn</a><a href="https://github.com/willyclayton">GitHub</a><a href="https://photos.willyclayton.com">Photos</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOME 5 -->
+<section class="mk" id="v5">
+  <div class="mk-label"><b>Home 5 · Departure board</b> A split-flap board for the résumé, a nod to the flight and train trackers. Letters flip into place.<button type="button" data-replay="5">replay</button></div>
+  <div class="mk-frame">
+    <div class="h5x">
+      <div>
+        <h2 class="hello" style="margin:0;font-weight:400"><span>hello.... I'm</span>Will.<i class="caret" aria-hidden="true"></i></h2>
+        <div class="links"><a href="#">work</a><a href="#">projects</a><a href="#">about</a><a href="https://www.linkedin.com/in/willuclayton">linkedin</a></div>
+      </div>
+      <div class="board" role="table" aria-label="Will Clayton at a glance">
+        <div class="head" role="row"><span role="columnheader">WHEN</span><span role="columnheader">ROLE</span><span role="columnheader">WHERE</span></div>
+        <div class="row now" role="row"><span class="cell" role="cell" data-text="NOW"></span><span class="cell" role="cell" data-text="SOLUTIONS ENGINEER"></span><span class="cell" role="cell" data-text="OMNI ANALYTICS"></span></div>
+        <div class="row" role="row"><span class="cell" role="cell" data-text="2020-26"></span><span class="cell" role="cell" data-text="DATA CONSULTANT"></span><span class="cell" role="cell" data-text="ACCENTURE"></span></div>
+        <div class="row" role="row"><span class="cell" role="cell" data-text="2022-25"></span><span class="cell" role="cell" data-text="MS ANALYTICS"></span><span class="cell" role="cell" data-text="GEORGIA TECH"></span></div>
+        <div class="row" role="row"><span class="cell" role="cell" data-text="2015-19"></span><span class="cell" role="cell" data-text="BS MECH ENGINEERING"></span><span class="cell" role="cell" data-text="GEORGIA TECH"></span></div>
+        <div class="row" role="row"><span class="cell" role="cell" data-text="BASED"></span><span class="cell" role="cell" data-text="CHICAGO IL"></span><span class="cell" role="cell" data-text="ORD"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mk-end"></div>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  const common = (a, b) => { let k = 0; while (k < a.length && a[k] === b[k]) k++; return k; };
+  const runs = {};
+
+  // Types each line in turn, deleting only back to the shared start, and stops on the last.
+  function typer(el, lines, o = {}) {
+    const t = el.querySelector('.t'), r = el.querySelector('.rest');
+    const start = t.textContent;
+    return async (id) => {
+      let prev = start;
+      t.textContent = start; r.textContent = '';
+      if (reduce) { t.textContent = lines[lines.length - 1]; return; }
+      await wait(o.first || 1200);
+      for (let n = 0; n < lines.length; n++) {
+        const next = lines[n], k = common(prev, next);
+        for (let i = prev.length; i >= k; i--) { if (runs[o.key] !== id) return; t.textContent = prev.slice(0, i); r.textContent = prev.slice(i); await wait(28); }
+        for (let i = k; i <= next.length; i++) { if (runs[o.key] !== id) return; t.textContent = next.slice(0, i); r.textContent = next.slice(i); await wait(55 + Math.random() * 45); }
+        prev = next;
+        if (n < lines.length - 1) await wait(o.hold || 1400);
+      }
+    };
+  }
+
+  const anims = {
+    1: typer(document.getElementById('t1'), ['a solutions engineer.', 'a Georgia Tech grad.', 'a lifelong learner.', 'a passionate golfer.', 'Will.'], { key: 1 }),
+    3: typer(document.getElementById('t3'), ['a Georgia Tech grad.', 'a lifelong learner.', 'a passionate golfer.', 'a solutions engineer.'], { key: 3, first: 1600 }),
+  };
+
+  // Home 2: terminal
+  const script = [
+    ['whoami', '<b>Will Clayton</b>, solutions engineer at Omni Analytics, Chicago'],
+    ['cat history.txt', '2020–2026  Data &amp; Applied Intelligence Consultant, Accenture\n2022–2025  MS Analytics, Georgia Tech\n2015–2019  BS Mechanical Engineering, Georgia Tech'],
+    ['ls projects/', 'the-bracket-lab  masters-2026  movie-picker  chicago-history\nall-my-flights  flight-aware  navy-ship-tracker  georgia-swarm  …'],
+  ];
+  anims[2] = async (id) => {
+    const out = document.getElementById('termOut'), cmds = document.getElementById('termCmds');
+    out.innerHTML = ''; cmds.hidden = true;
+    for (const [cmd, res] of script) {
+      const line = document.createElement('div');
+      line.innerHTML = '<span class="p">will@chicago ~ %</span> <span class="cmd"></span><span class="caret"></span>';
+      out.append(line);
+      const c = line.querySelector('.cmd');
+      if (reduce) c.textContent = cmd;
+      else { await wait(500); for (let i = 1; i <= cmd.length; i++) { if (runs[2] !== id) return; c.textContent = cmd.slice(0, i); await wait(70 + Math.random() * 50); } await wait(300); }
+      line.querySelector('.caret').remove();
+      const o = document.createElement('div'); o.className = 'out'; o.innerHTML = res; out.append(o);
+    }
+    const last = document.createElement('div');
+    last.innerHTML = '<span class="p">will@chicago ~ %</span> <span class="caret"></span>';
+    out.append(last); cmds.hidden = false;
+  };
+
+  // Home 4: reveal the paragraph one character at a time, links included.
+  const para = document.getElementById('sentence');
+  const chars = [];
+  (function split(node) {
+    [...node.childNodes].forEach((n) => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        for (const ch of n.textContent) { const s = document.createElement('span'); s.className = 'c'; s.textContent = ch; frag.append(s); chars.push(s); }
+        n.replaceWith(frag);
+      } else split(n);
+    });
+  })(para);
+  para.setAttribute('aria-label', para.textContent);
+  anims[4] = async (id) => {
+    chars.forEach((c) => c.classList.toggle('on', reduce));
+    if (reduce) return;
+    await wait(500);
+    for (const c of chars) { if (runs[4] !== id) return; c.classList.add('on'); await wait(/[.,]/.test(c.textContent) ? 180 : 22 + Math.random() * 18); }
+  };
+
+  // Home 5: split-flap cells
+  const cells = [...document.querySelectorAll('.board .cell')];
+  const ALPHA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-';
+  cells.forEach((cell) => { cell.setAttribute('aria-label', cell.dataset.text); });
+  anims[5] = async (id) => {
+    cells.forEach((cell) => {
+      cell.innerHTML = '';
+      for (const ch of cell.dataset.text) { const s = document.createElement('span'); s.className = 'ch'; s.setAttribute('aria-hidden', 'true'); s.textContent = reduce ? ch : ' '; s.dataset.ch = ch; cell.append(s); }
+    });
+    if (reduce) return;
+    const all = [...document.querySelectorAll('.board .ch')];
+    all.forEach((s, i) => {
+      const target = s.dataset.ch; if (target === ' ') { s.textContent = ' '; return; }
+      let flips = 6 + Math.floor(Math.random() * 10) + Math.floor(i / 12);
+      const tick = () => {
+        if (runs[5] !== id) return;
+        if (flips-- <= 0) { s.textContent = target; return; }
+        s.textContent = ALPHA[Math.floor(Math.random() * ALPHA.length)];
+        setTimeout(tick, 55);
+      };
+      setTimeout(tick, 300 + (i % 20) * 25);
+    });
+  };
+
+  function play(k) { runs[k] = (runs[k] || 0) + 1; anims[k](runs[k]); }
+  document.querySelectorAll('[data-replay]').forEach((b) => b.addEventListener('click', () => play(b.dataset.replay)));
+  // Start each one when it scrolls into view.
+  const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (!e.isIntersecting) return;
+    const k = e.target.id.slice(1); if (anims[k] && !runs[k]) play(k); io.unobserve(e.target);
+  }), { threshold: .35 });
+  document.querySelectorAll('.mk').forEach((s) => io.observe(s));
+})();
+</script>
+</body>
+</html>
