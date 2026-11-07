@@ -158,7 +158,7 @@
       'a golfer.',
       'an OK golfer.',
       'a skier.',
-      'a woodworker.',
+      'a DIY-er.',
       'a tinkerer.',
       'a problem solver.',
       'a lifelong learner.',
