@@ -249,8 +249,8 @@ html:not(.js) .type-toggle { display: none; }
     linear-gradient(var(--muted), var(--muted)) center / 1px 100% no-repeat;
   transition: transform .45s var(--ease);
 }
-.row[open] summary::after { transform: rotate(45deg); }
-.row[open] .n { color: var(--fg); }
+.row[open] > summary::after { transform: rotate(45deg); }
+.row[open] > summary .n { color: var(--fg); }
 
 .body {
   padding: 0 0 1.25rem;
@@ -352,15 +352,18 @@ html:not(.js) .type-toggle { display: none; }
   .panel + .panel { margin-top: 2rem !important; }
 }
 
-/* ---------- Project folders ---------- */
-.folder .n::before { content: "/ "; color: var(--muted); font-family: var(--mono); font-weight: 400; }
-.items { margin: 0; padding: 0 0 .75rem; list-style: none; animation: materialize .55s var(--ease) both; }
-.items li { padding: .75rem 0 .75rem 1rem; border-left: 1px solid var(--line); }
-.items .t { display: inline-block; padding: .2rem 0; font-weight: 500; }
-.items p { max-width: 34rem; color: var(--muted); font-size: .9375rem; }
-.items .meta { margin-top: .1rem; font-size: .8125rem; }
-.items .meta a { padding: .5rem 0; }
-@media (prefers-reduced-motion: reduce) { .items { animation: none !important; } }
+/* ---------- Projects: screenshot, facts, folders ---------- */
+.folder > summary .n::before { content: "/ "; color: var(--muted); font-family: var(--mono); font-weight: 400; }
+.sub { padding: 0 0 .5rem 1rem; border-left: 1px solid var(--line); animation: materialize .55s var(--ease) both; }
+.sub .row:last-child { border-bottom: 0; }
+.shot { display: block; margin-bottom: .75rem; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--line); }
+.shot img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; transition: transform .6s var(--ease); }
+.shot:hover img { transform: scale(1.02); }
+.facts { margin: .6rem 0 0; font-size: .875rem; }
+.facts div { display: flex; gap: .75rem; padding: .15rem 0; }
+.facts dt { flex: none; width: 5.5rem; font-family: var(--mono); font-size: .8125rem; }
+.facts dd { margin: 0; color: var(--fg); }
+@media (prefers-reduced-motion: reduce) { .sub, .shot img { animation: none !important; transition: none !important; } }
 
 /* ---------- Work: second group label (education) and course lists ---------- */
 .group {
