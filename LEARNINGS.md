@@ -119,7 +119,8 @@ Tested with Playwright at 320, 390, 768 and 1280 px, light and dark, with motion
 
 ## Couldn't check
 
-- The cloud session's network blocks the project hosts (vercel.app, netlify.app, railway.app, onrender.com, web.app, github.io), LinkedIn and photos.willyclayton.com. So the project links haven't been opened, and no real screenshots were taken. Check every link on the Vercel preview before pointing the domain.
+- The default cloud environment blocks outside hosts. A separate `personal-website` environment now allows the preview, the domain and every host the site links to.
+- Link check (November 2026): every project link loads except the Chicago Train Tracker, whose Railway app returns "Application not found". That project now links to its GitHub repo. The Stock Trader Assistant on Render takes a few seconds to wake up. LinkedIn answers automated requests with code 999, so the profile link couldn't be verified that way.
 - Find-in-page was tested by firing `beforematch` directly, not by a real Ctrl+F.
 
 ## Open items
@@ -128,4 +129,4 @@ Tested with Playwright at 320, 390, 768 and 1280 px, light and dark, with motion
 - Omni role: one line now. Needs 2 to 3 real bullets from Will.
 - Résumé PDF.
 - Whether to list an email address.
-- Vercel deploy (preset "Other", no build command, repo root), then the GoDaddy DNS steps from the original spec. Leave the `photos` CNAME alone.
+- Vercel is live at https://personal-website-six-self-26.vercel.app and deploys from `main`. Next: add `willyclayton.com` in Vercel, then the GoDaddy DNS steps in the README. Leave the `photos` CNAME alone.
