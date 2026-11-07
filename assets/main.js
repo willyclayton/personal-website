@@ -376,15 +376,8 @@
 
 // Georgia Tech rows: every click sends a yellow jacket floating up the screen.
 (() => {
-  const SVG = '<svg viewBox="0 0 64 64" aria-hidden="true">' +
-    '<ellipse cx="22" cy="20" rx="13" ry="7" transform="rotate(-25 22 20)" fill="#dfe9f3" fill-opacity=".85" stroke="#1d1d1f" stroke-width="1.5"/>' +
-    '<ellipse cx="42" cy="20" rx="13" ry="7" transform="rotate(25 42 20)" fill="#dfe9f3" fill-opacity=".85" stroke="#1d1d1f" stroke-width="1.5"/>' +
-    '<ellipse cx="32" cy="40" rx="11" ry="16" fill="#f2c230" stroke="#1d1d1f" stroke-width="2"/>' +
-    '<path d="M22 35h20M21.5 42h21M24 49h16" stroke="#1d1d1f" stroke-width="4" stroke-linecap="round"/>' +
-    '<circle cx="32" cy="22" r="7" fill="#1d1d1f"/>' +
-    '<circle cx="29.5" cy="21" r="1.6" fill="#fff"/><circle cx="34.5" cy="21" r="1.6" fill="#fff"/>' +
-    '<path d="M29 15l-4-6M35 15l4-6" stroke="#1d1d1f" stroke-width="1.8" stroke-linecap="round"/>' +
-    '<path d="M32 56l0 5" stroke="#1d1d1f" stroke-width="2" stroke-linecap="round"/></svg>';
+  // Swap assets/buzz.svg for any image (same name) to change what flies up.
+  const IMG = '<img src="/assets/buzz.svg" alt="" width="56" height="56">';
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   document.querySelectorAll('summary[data-buzz]').forEach((s) => {
     s.addEventListener('click', (e) => {
@@ -393,7 +386,7 @@
       const y = e.clientY || s.getBoundingClientRect().top + 20;
       const bee = document.createElement('span');
       bee.className = 'buzz';
-      bee.innerHTML = SVG;
+      bee.innerHTML = IMG;
       bee.style.left = x + 'px';
       bee.style.top = y + 'px';
       bee.style.setProperty('--drift', (Math.random() * 160 - 80).toFixed(0) + 'px');
