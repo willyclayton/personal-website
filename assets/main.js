@@ -3,7 +3,6 @@
 (() => {
   const root = document.documentElement;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)');
 
   /* ---------------- Tabs (hash routing) ---------------- */
 
@@ -137,9 +136,8 @@
     // Typed in order after the name, then it settles back on the name and stops.
     const lines = [
       'a solutions engineer.',
-      'a data nerd.',
       'a Georgia Tech grad.',
-      'a Braves fan.',
+      'a lifelong learner.',
       'a passionate golfer.',
       NAME,
     ];
@@ -334,18 +332,6 @@
     });
   });
 
-  /* ---------------- Spotlight that follows the cursor on project cards ---------------- */
-
-  if (canHover.matches && !reduceMotion.matches) {
-    projects.forEach((p) => {
-      p.addEventListener('pointermove', (e) => {
-        const r = p.getBoundingClientRect();
-        p.style.setProperty('--x', (e.clientX - r.left) + 'px');
-        p.style.setProperty('--y', (e.clientY - r.top) + 'px');
-      });
-    });
-  }
-
   /* ---------------- Testimonials: one at a time ---------------- */
 
   const quotes = document.querySelector('.quotes');
@@ -354,7 +340,7 @@
     const list = quotes.querySelector('.quote-list');
     const controls = document.createElement('div');
     controls.className = 'deck-controls';
-    controls.innerHTML = '<button type="button">Another one</button><span class="count"></span>';
+    controls.innerHTML = '<button type="button">another one</button><span class="count"></span>';
     list.after(controls);
     list.setAttribute('aria-live', 'polite');
     const count = controls.querySelector('.count');
