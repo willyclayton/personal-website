@@ -376,8 +376,8 @@
 
 // Georgia Tech rows: every click sends a yellow jacket floating up the screen.
 (() => {
-  // Swap assets/buzz.svg for any image (same name) to change what flies up.
-  const IMG = '<img src="/assets/buzz.svg" alt="" width="56" height="56">';
+  // Swap assets/buzz.png for any image (same name) to change what flies up.
+  const IMG = '<img src="/assets/buzz.png" alt="" width="64" height="64">';
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   document.querySelectorAll('summary[data-buzz]').forEach((s) => {
     s.addEventListener('click', (e) => {
