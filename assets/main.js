@@ -179,9 +179,17 @@
     let onHome = false;
 
     // [typed][caret][invisible rest]: the rest holds its space so lines never reflow.
+    const afterEl = heading.querySelector('.after');
     function render(text, i) {
       typedEl.textContent = text.slice(0, i);
+      if (afterEl) afterEl.textContent = '';
       restEl.textContent = text.slice(i);
+    }
+    // Caret in the middle of visible text, for edits like "a golfer." -> "an OK golfer."
+    function renderMid(before, after) {
+      typedEl.textContent = before;
+      afterEl.textContent = after;
+      restEl.textContent = '';
     }
     function setToggle(label, aria) {
       if (!toggle) return;
@@ -214,10 +222,29 @@
       const text = lines[n];
       // Only delete back to what the two lines share ("a "), like a person would.
       const k = common(prev, text);
-      erase(prev, prev.length, k, () => at(200, () => type(text, k, () => {
+      const done = () => {
         if (n === lines.length - 1) finish();
         else at(HOLD, () => next(text, n + 1));
-      })));
+      };
+      // If the new line is the old one with words added in the middle, move the
+      // caret back and insert them instead of deleting ("a golfer." -> "an OK golfer.").
+      const tail = prev.slice(k);
+      const insert = text.slice(k, text.length - tail.length);
+      if (afterEl && tail && insert && text.endsWith(tail)) {
+        heading.classList.add('typing');
+        const back = (i) => {
+          renderMid(prev.slice(0, i), prev.slice(i));
+          if (i > k) at(45, () => back(i - 1));
+          else at(250, () => ins(1));
+        };
+        const ins = (j) => {
+          renderMid(text.slice(0, k + j), tail);
+          if (j < insert.length) at(pace(insert[j - 1]), () => ins(j + 1));
+          else { heading.classList.remove('typing'); render(text, text.length); done(); }
+        };
+        return back(prev.length);
+      }
+      erase(prev, prev.length, k, () => at(200, () => type(text, k, done)));
     }
 
     function finish() {
