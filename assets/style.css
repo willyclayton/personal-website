@@ -361,3 +361,22 @@ html:not(.js) .type-toggle { display: none; }
 .items .meta { margin-top: .1rem; font-size: .8125rem; }
 .items .meta a { padding: .5rem 0; }
 @media (prefers-reduced-motion: reduce) { .items { animation: none !important; } }
+
+/* ---------- Work: second group label (education) and course lists ---------- */
+.group {
+  margin: 3rem 0 1rem;
+  font-family: var(--mono);
+  font-size: .875rem;
+  font-weight: 400;
+  letter-spacing: .02em;
+  color: var(--muted);
+}
+.body .courses {
+  margin-top: .75rem;
+  padding: 0;
+  list-style: none;
+  columns: 2 13rem;
+  column-gap: 1.5rem;
+  font-size: .875rem;
+}
+.body .courses li { margin: 0; padding: .2rem 0; break-inside: avoid; }
