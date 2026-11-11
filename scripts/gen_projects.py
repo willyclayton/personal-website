@@ -87,6 +87,13 @@ FOLDERS = [
     ]),
 ]
 
+BOTTOM = [
+    ('photography', 'Photography', '146 photos', 'https://photos.willyclayton.com',
+     'Photos from trips, as a wall, a map and a top-photos page.',
+     'Cloudflare Pages',
+     'My semi-professional attempt at a photography site.'),
+]
+
 e = html.escape
 
 
@@ -124,5 +131,10 @@ for folder, items in FOLDERS:
                 body(key, name, url, what, tools, why, 12),
                 '          </details>']
     out += ['        </div>', '      </details>']
+for key, name, tag, url, what, tools, why in BOTTOM:
+    out += ['', '      <details class="row">',
+            f'        <summary><span class="n">{e(name)}</span><span class="y">{e(tag)}</span></summary>',
+            body(key, name, url, what, tools, why, 8),
+            '      </details>']
 out += ['    </div>', '  </section>', '']
 sys.stdout.write('\n'.join(out))
