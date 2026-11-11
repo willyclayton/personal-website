@@ -15,10 +15,9 @@ TOP = [
      'Chicago history on a map, from 1780 to today.',
      'TypeScript, MapLibre',
      "To see Chicago's history where it actually happened."),
-    ('carrier-tracker', 'Carrier Tracker', 'maps', 'https://navy-ship-tracker.vercel.app',
-     'Where the USS George Washington is right now.',
-     'Next.js, Leaflet, daily cron',
-     'Fleet reports are hard to read. This puts them on a map.'),
+    ('golf-fly', 'Golf Fly', '3D · golf', 'https://willyclayton.github.io/Golf-fly/',
+     'Chicago public courses as a 3D yardage book. In progress.', 'Python, OpenStreetMap, lidar',
+     'Public courses rarely have a good yardage book.'),
 ]
 FOLDERS = [
     ('Sports', [
@@ -47,7 +46,10 @@ FOLDERS = [
          'The 2026 Kelly Cup playoff bracket.', 'HTML, Vercel',
          'To follow the Kelly Cup in one place.'),
     ]),
-    ('Flights', [
+    ('Flights & maps', [
+        ('carrier-tracker', 'Carrier Tracker', 'https://navy-ship-tracker.vercel.app',
+         'Where the USS George Washington is right now.', 'Next.js, Leaflet, daily cron',
+         'Fleet reports are hard to read. This puts them on a map.'),
         ('flightly', 'Flightly', 'https://flightly-seven.vercel.app',
          'A personal flight tracker with a live trip screen.', 'Next.js, Leaflet',
          'Flighty Pro features without the subscription.'),
@@ -65,9 +67,6 @@ FOLDERS = [
         ('spire', 'Spire', 'https://spire-phi.vercel.app',
          'Point your phone at the skyline to name the buildings.', 'React, MapLibre, phone sensors',
          'To answer "what is that building?"'),
-        ('golf-fly', 'Golf Fly', 'https://willyclayton.github.io/Golf-fly/',
-         'Chicago public courses as a 3D yardage book. In progress.', 'Python, OpenStreetMap, lidar',
-         'Public courses rarely have a good yardage book.'),
         ('wall-dashboard', 'Wall Dashboard', 'https://effortless-parfait-18ceea.netlify.app/',
          'Trains, weather and scores on a wall-mounted tablet.', 'HTML, CTA API',
          'A use for an old Android tablet.'),
