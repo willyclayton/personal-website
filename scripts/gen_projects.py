@@ -94,6 +94,11 @@ BOTTOM = [
      'My semi-professional attempt at a photography site.'),
 ]
 
+# Camera icon so Photography stands apart from the code projects.
+CAMERA = ('<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+          '<path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/>'
+          '<circle cx="12" cy="13" r="3.5"/></svg>')
+
 e = html.escape
 
 
@@ -133,7 +138,7 @@ for folder, items in FOLDERS:
     out += ['        </div>', '      </details>']
 for key, name, tag, url, what, tools, why in BOTTOM:
     out += ['', '      <details class="row">',
-            f'        <summary><span class="n">{e(name)}</span><span class="y">{e(tag)}</span></summary>',
+            f'        <summary><span class="n">{CAMERA}{e(name)}</span><span class="y">{e(tag)}</span></summary>',
             body(key, name, url, what, tools, why, 8),
             '      </details>']
 out += ['    </div>', '  </section>', '']

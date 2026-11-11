@@ -403,3 +403,6 @@ html:not(.js) .type-toggle { display: none; }
 }
 @keyframes buzz-wobble { from { transform: rotate(-8deg); } to { transform: rotate(8deg); } }
 .body b { color: var(--fg); font-weight: 600; }
+
+/* Camera icon on the Photography row. */
+.row .ico { display: inline-block; width: 1.05em; height: 1.05em; margin-right: .45em; vertical-align: -.15em; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; }
