@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /mockups/
 
-Sitemap: https://willyclayton.com/sitemap.xml
+Sitemap: https://www.willyclayton.com/sitemap.xml
