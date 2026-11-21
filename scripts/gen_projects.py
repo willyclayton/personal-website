@@ -18,9 +18,10 @@ TOP = [
     ('golf-fly', 'Golf Fly', '3D · golf', 'https://willyclayton.github.io/Golf-fly/',
      'Chicago public courses as a 3D yardage book. In progress.', 'Python, OpenStreetMap, lidar',
      'Public courses rarely have a good yardage book.'),
-    ('nhl-goal-graph', 'NHL Goal Graph', 'hockey · data', 'https://nhl-goal-graph.vercel.app',
-     'Every NHL goal since 2010 as a scorer-goalie network.', 'Next.js, D3',
-     'To see how any two players connect through goals.'),
+    ('hockey-atlas', 'Hockey Atlas', 'hockey · maps', 'https://willyclayton.github.io/hockey-map/',
+     'Every team in nine hockey leagues on one map, linked by the players they share.',
+     'D3, TopoJSON, Python, GitHub Actions',
+     'To see how the hockey world connects, from the NHL down to juniors.'),
 ]
 FOLDERS = [
     ('Sports', [
@@ -39,6 +40,9 @@ FOLDERS = [
         ('georgia-swarm', 'Georgia Swarm', 'https://georgia-swarm.vercel.app/',
          'Scores, roster and highlights for an NLL team.', 'Next.js, GitHub Actions',
          "The NLL has no good app for following one team. Idea from Johnny U."),
+        ('nhl-goal-graph', 'NHL Goal Graph', 'https://nhl-goal-graph.vercel.app',
+         'Every NHL goal since 2010 as a scorer-goalie network.', 'Next.js, D3',
+         'To see how any two players connect through goals.'),
         ('mlb-live', 'MLB Live Stats', 'https://mlb-player-stats-live.vercel.app',
          'Tap a player for live numbers and a stat fact.', 'Next.js, MLB Stats API',
          "A fun stat for whoever's at the plate."),
