@@ -443,3 +443,6 @@ html:not(.js) .type-toggle { display: none; }
 .js .reach.shown .reach-links li:nth-child(2) { transition-delay: 1.1s; }
 .js .reach.shown .reach-links li:nth-child(3) { transition-delay: 1.7s; }
 @media (prefers-reduced-motion: reduce) { .js .reach-links li { opacity: 1; transform: none; filter: none; transition: none; } }
+.reach-links a { display: inline-flex; align-items: center; gap: .5rem; }
+.reach-links .logo { width: 1.15em; height: 1.15em; fill: currentColor; flex: none; }
+.reach-links .logo.outline { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; width: 1.3em; height: 1.3em; }
