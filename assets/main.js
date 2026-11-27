@@ -408,3 +408,13 @@
     });
   });
 })();
+
+// About: "reach out" links appear one at a time when the line scrolls into view.
+(() => {
+  const reach = document.querySelector('.reach');
+  if (!reach || !('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => reach.classList.toggle('shown', e.isIntersecting));
+  }, { threshold: 0.6 });
+  io.observe(reach);
+})();
