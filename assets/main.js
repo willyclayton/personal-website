@@ -413,9 +413,46 @@
 (() => {
   const reach = document.querySelector('.reach');
   if (!reach || !('IntersectionObserver' in window)) return;
+  let split = null;
   const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => reach.classList.toggle('shown', e.isIntersecting));
+    entries.forEach((e) => {
+      if (e.isIntersecting && split) split();
+      reach.classList.toggle('shown', e.isIntersecting);
+    });
   }, { threshold: 0.6 });
   io.observe(reach);
+
+  // Split the highlighted sentence into one mark per rendered line, so the
+  // highlighter sweeps line 1, lifts, then sweeps line 2, at a steady speed.
+  const p = reach.querySelector('.hl') && reach.querySelector('.hl').parentElement;
+  if (!p) return;
+  const text = p.textContent.trim();
+  const SPEED = 0.0055; // seconds per pixel (about 1.9s across a phone-width line)
+  let lastW = 0;
+  split = () => {
+    const w = p.clientWidth;
+    if (!w || w === lastW) return; // hidden tab: wait until it's on screen
+    lastW = w;
+    p.innerHTML = text.split(' ').map((t) => `<span>${t}</span>`).join(' ');
+    const lines = [];
+    let top = null;
+    p.querySelectorAll('span').forEach((s) => {
+      if (s.offsetTop !== top) { lines.push([]); top = s.offsetTop; }
+      lines[lines.length - 1].push(s.textContent);
+    });
+    p.innerHTML = lines.map((l) => `<mark class="hl">${l.join(' ')}</mark>`).join(' ');
+    let at = 0.4;
+    p.querySelectorAll('.hl').forEach((m) => {
+      const d = Math.max(0.7, m.getBoundingClientRect().width * SPEED);
+      m.style.setProperty('--w', at.toFixed(2) + 's');
+      m.style.setProperty('--d', d.toFixed(2) + 's');
+      at += d + 0.25; // pen lift between lines
+    });
+    reach.style.setProperty('--links', (at + 0.2).toFixed(2) + 's');
+  };
+  split();
+  let t;
+  window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(split, 150); });
+  if (document.fonts) document.fonts.ready.then(() => { lastW = 0; split(); });
 })();
 
