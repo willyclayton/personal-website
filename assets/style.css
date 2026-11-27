@@ -446,3 +446,28 @@ html:not(.js) .type-toggle { display: none; }
 .reach-links a { display: inline-flex; align-items: center; gap: .5rem; }
 .reach-links .logo { width: 1.15em; height: 1.15em; fill: currentColor; flex: none; }
 .reach-links .logo.outline { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; width: 1.3em; height: 1.3em; }
+
+/* ---------- About: hand-drawn highlighter ---------- */
+/* A wobbly marker stroke (SVG, stretched to fit) that sweeps left to right. */
+.hl {
+  color: inherit;
+  padding: .05em .4em;
+  margin: 0 -.4em;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpath d='M1.5 5.5C14 3.2 28 4.6 41 3.4S67 2.8 80 3.9 95 3.1 98.6 4.6L97.4 9.8 99 16.1C86 17.8 72 15.9 58 17.2S31 16.4 18 17.6 4.5 16.2 1.2 15.9L.4 10.4Z' fill='%23ffd84a' fill-opacity='.75'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0 55%;
+  background-size: 0% 92%;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size 1.2s cubic-bezier(.65, .05, .25, 1) .35s, color .5s ease .35s;
+}
+.bio.highlighted .hl { background-size: 100% 92%; }
+/* Dark theme: text goes dark under the yellow so it stays readable. */
+:root[data-theme="dark"] .hl { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpath d='M1.5 5.5C14 3.2 28 4.6 41 3.4S67 2.8 80 3.9 95 3.1 98.6 4.6L97.4 9.8 99 16.1C86 17.8 72 15.9 58 17.2S31 16.4 18 17.6 4.5 16.2 1.2 15.9L.4 10.4Z' fill='%23ffd84a'/%3E%3C/svg%3E"); }
+:root[data-theme="dark"] .bio.highlighted .hl { color: #111113; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .hl { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpath d='M1.5 5.5C14 3.2 28 4.6 41 3.4S67 2.8 80 3.9 95 3.1 98.6 4.6L97.4 9.8 99 16.1C86 17.8 72 15.9 58 17.2S31 16.4 18 17.6 4.5 16.2 1.2 15.9L.4 10.4Z' fill='%23ffd84a'/%3E%3C/svg%3E"); }
+  :root:not([data-theme="light"]) .bio.highlighted .hl { color: #111113; }
+}
+@media (prefers-reduced-motion: reduce) { .hl { transition: none; } }

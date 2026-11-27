@@ -418,3 +418,12 @@
   }, { threshold: 0.6 });
   io.observe(reach);
 })();
+
+// About: the first line gets swept with a highlighter each time it comes into view.
+(() => {
+  const bio = document.querySelector('.bio');
+  if (!bio || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver((entries) => {
+    entries.forEach((e) => bio.classList.toggle('highlighted', e.isIntersecting));
+  }, { threshold: 0.8 }).observe(bio);
+})();
